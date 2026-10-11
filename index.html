@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Concorde · Crans-Montana</title>
+<meta name="description" content="La Concorde, appartement moderniste rénové à Crans-Montana, 1362 m, face à la vallée du Rhône et au Mont Blanc.">
+<meta name="theme-color" content="#1f1c19">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Concorde">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:title" content="La Concorde · Crans-Montana">
+<meta property="og:description" content="Un balcon sur les Alpes, à 1362 m.">
+<meta property="og:image" content="img/balcon-1600.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+[hidden] { display: none !important; }
+:root {
+  --paper: #f3efe8;
+  --paper-2: #e9e2d6;
+  --ink: #241f1b;
+  --ink-soft: #5d544b;
+  --rule: #d6ccbd;
+  --wood: #b5763c;
+  --terracotta: #a4502f;
+  --night: #16171c;
+  --night-ink: #ece6dc;
+  --night-soft: #a69d90;
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --sans: "Hanken Grotesk", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --gutter: 20px;
+  --measure: 34rem;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 56px; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+
+/* language */
+html[data-lang="fr"] .en, html[data-lang="en"] .fr { display: none !important; }
+
+/* hero */
+.hero { position: relative; height: 100svh; min-height: 560px; color: #fff; overflow: hidden; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 60%; }
+.hero::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,8,6,.35) 0%, rgba(10,8,6,0) 22%, rgba(10,8,6,0) 50%, rgba(10,8,6,.62) 100%); }
+.hero-top { position: absolute; z-index: 2; top: 0; left: 0; right: 0;
+  padding: calc(env(safe-area-inset-top) + 14px) var(--gutter) 0; display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
+.hero-text { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0;
+  padding: 0 var(--gutter) calc(env(safe-area-inset-bottom) + 40px); max-width: 1200px; margin: 0 auto; }
+.hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(64px, 19vw, 168px); line-height: .88; margin: 0 0 14px; letter-spacing: -.01em; }
+.hero p { margin: 0; font-size: 15px; letter-spacing: .04em; max-width: 26rem; opacity: .95; }
+
+.lang { display: inline-flex; border: 1px solid currentColor; border-radius: 99px; overflow: hidden; }
+.lang button { appearance: none; border: 0; background: transparent; color: inherit; font: inherit; font-size: 11px;
+  letter-spacing: .14em; padding: 6px 11px; cursor: pointer; }
+html[data-lang="fr"] .lang [data-set="fr"], html[data-lang="en"] .lang [data-set="en"] { background: currentColor; }
+html[data-lang="fr"] .lang [data-set="fr"] span, html[data-lang="en"] .lang [data-set="en"] span { color: var(--ink); }
+.hero-top .lang [data-set] span { color: #fff; }
+html[data-lang="fr"] .hero-top .lang [data-set="fr"] span, html[data-lang="en"] .hero-top .lang [data-set="en"] span { color: var(--ink); }
+
+/* nav */
+nav.bar { position: sticky; top: 0; z-index: 20; background: rgba(243,239,232,.94);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+  padding-top: env(safe-area-inset-top); }
+nav.bar .inner { display: flex; gap: 22px; overflow-x: auto; padding: 14px var(--gutter); scrollbar-width: none;
+  max-width: 1200px; margin: 0 auto; }
+nav.bar .inner::-webkit-scrollbar { display: none; }
+nav.bar a { text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--ink-soft); }
+nav.bar a:active { color: var(--terracotta); }
+
+/* layout */
+section { padding: 72px 0; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
+.kicker { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--terracotta); margin: 0 0 14px; }
+h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 10vw, 76px); line-height: 1; margin: 0 0 22px; letter-spacing: -.005em; }
+h3 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.05; margin: 0 0 10px; }
+.lede { font-family: var(--serif); font-size: clamp(24px, 5.6vw, 34px); line-height: 1.25; max-width: 40rem; margin: 0 0 28px; }
+.prose { max-width: var(--measure); color: var(--ink-soft); }
+.prose p { margin: 0 0 1em; }
+
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--rule); margin-top: 40px; }
+.facts div { padding: 18px 0 16px; border-bottom: 1px solid var(--rule); }
+.facts div:nth-child(odd) { padding-right: 12px; }
+.facts b { display: block; font-family: var(--serif); font-weight: 400; font-size: 38px; line-height: 1; font-variant-numeric: tabular-nums; }
+.facts span { font-size: 13px; color: var(--ink-soft); }
+@media (min-width: 760px) { .facts { grid-template-columns: repeat(4, 1fr); } }
+
+/* rooms */
+.room { margin-top: 64px; }
+.room:first-of-type { margin-top: 36px; }
+.room-head { display: grid; gap: 4px; margin-bottom: 18px; }
+.room-head .n { font-size: 12px; letter-spacing: .16em; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.room-head p { margin: 0; color: var(--ink-soft); max-width: var(--measure); }
+.shots { display: grid; gap: 10px; }
+.shots.two { grid-template-columns: 1fr 1fr; }
+.shots.three { grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 559px) { .shots.three { grid-template-columns: 1fr 1fr; } .shots.three figure:first-child { grid-column: 1 / -1; } }
+figure { margin: 0; }
+figure button { appearance: none; border: 0; padding: 0; margin: 0; background: var(--paper-2); display: block; width: 100%; cursor: zoom-in; }
+figure img { width: 100%; height: 100%; object-fit: cover; }
+.shots.two figure button, .shots.three figure button { aspect-ratio: 2 / 3; }
+.shots.three figure:first-child button { aspect-ratio: auto; }
+@media (min-width: 560px) { .shots.three figure:first-child button { aspect-ratio: 2 / 3; } }
+.shots.three figure:first-child button img { aspect-ratio: 3 / 2; }
+@media (min-width: 560px) { .shots.three figure:first-child button img { aspect-ratio: auto; } }
+figcaption { font-size: 13px; color: var(--ink-soft); padding-top: 8px; line-height: 1.45; }
+
+/* furniture */
+.pieces { margin: 36px 0 0; border-top: 1px solid var(--rule); }
+.piece { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.piece dt { font-family: var(--serif); font-size: 24px; line-height: 1.15; }
+.piece dd { margin: 0; font-size: 13px; letter-spacing: .04em; color: var(--ink-soft); text-align: right; }
+.piece .note { grid-column: 1 / -1; font-size: 14px; color: var(--ink-soft); text-align: left; letter-spacing: 0; }
+@media (min-width: 900px) { .pieces { columns: 2; column-gap: 48px; } .piece { break-inside: avoid; } }
+
+/* panorama */
+.pano-img button { aspect-ratio: auto; }
+.skyline-scroll { overflow-x: auto; margin: 26px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.skyline-scroll::-webkit-scrollbar { display: none; }
+.skyline { display: block; width: 1100px; height: auto; }
+.skyline .ridge { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.2; }
+.skyline .tick { stroke: var(--ink-soft); stroke-width: .8; }
+.skyline text { font-family: var(--sans); font-size: 12px; fill: var(--ink); }
+.skyline text.alt { fill: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.skyline .hi text { fill: var(--terracotta); font-weight: 600; }
+.swipe { font-size: 12px; color: var(--ink-soft); margin-top: 8px; letter-spacing: .04em; }
+
+/* night */
+.night { background: var(--night); color: var(--night-ink); }
+.night .kicker { color: #d39a6a; }
+.night .prose, .night figcaption, .night .room-head p { color: var(--night-soft); }
+.night figure button { background: #24252b; }
+.wide button { aspect-ratio: auto !important; }
+
+/* info */
+.info { display: grid; gap: 0; border-top: 1px solid var(--rule); margin-top: 32px; }
+.info div { padding: 16px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 9rem 1fr; gap: 12px; }
+.info dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); padding-top: 3px; }
+.info dd { margin: 0; }
+.info a { text-decoration-color: var(--rule); text-underline-offset: 3px; }
+@media (max-width: 420px) { .info div { grid-template-columns: 1fr; gap: 2px; } }
+
+footer { padding: 40px var(--gutter) calc(env(safe-area-inset-bottom) + 40px); font-size: 12px; color: var(--ink-soft); max-width: 1200px; margin: 0 auto; }
+footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); margin-bottom: 8px; }
+
+/* lightbox */
+#lb { position: fixed; inset: 0; z-index: 50; background: rgba(12,11,10,.96); display: flex; align-items: center; justify-content: center;
+  padding: calc(env(safe-area-inset-top) + 48px) 0 calc(env(safe-area-inset-bottom) + 56px); }
+#lb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+#lb .cap { position: absolute; left: var(--gutter); right: var(--gutter); bottom: calc(env(safe-area-inset-bottom) + 16px); color: #cfc7bb; font-size: 13px; text-align: center; }
+#lb .x { position: absolute; top: calc(env(safe-area-inset-top) + 10px); right: 12px; appearance: none; border: 0; background: transparent; color: #fff;
+  font-size: 30px; line-height: 1; width: 44px; height: 44px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="img/hero-1600.jpg" srcset="img/hero-800.jpg 800w, img/hero-1600.jpg 1600w" sizes="100vw" alt="">
+  <div class="hero-top">
+    <span>Crans-Montana · 1362 m</span>
+    <div class="lang" role="group" aria-label="Langue / Language">
+      <button data-set="fr"><span>FR</span></button><button data-set="en"><span>EN</span></button>
+    </div>
+  </div>
+  <div class="hero-text">
+    <h1>La Concorde</h1>
+    <p class="fr">Un appartement moderniste rénové, face à la vallée du Rhône et au Mont Blanc.</p>
+    <p class="en">A renovated modernist apartment facing the Rhône valley and Mont Blanc.</p>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Sections">
+  <div class="inner">
+    <a href="#appartement"><span class="fr">Appartement</span><span class="en">Apartment</span></a>
+    <a href="#pieces"><span class="fr">Pièces</span><span class="en">Rooms</span></a>
+    <a href="#mobilier"><span class="fr">Mobilier</span><span class="en">Furniture</span></a>
+    <a href="#panorama">Panorama</a>
+    <a href="#soir"><span class="fr">Le soir</span><span class="en">Evening</span></a>
+    <a href="#immeuble"><span class="fr">L’immeuble</span><span class="en">Building</span></a>
+    <a href="#infos"><span class="fr">Infos</span><span class="en">Info</span></a>
+  </div>
+</nav>
+
+<main>
+
+<section id="appartement">
+  <div class="wrap">
+    <p class="kicker"><span class="fr">L’appartement</span><span class="en">The apartment</span></p>
+    <p class="lede fr">Un appartement de montagne dans un immeuble moderniste en bois et béton, prolongé par un balcon ouvert sur la vallée.</p>
+    <p class="lede en">A mountain apartment in a modernist timber and concrete building, extended by a balcony that opens onto the valley.</p>
+    <div class="prose">
+      <p class="fr">La rénovation a gardé ce que le bâtiment faisait déjà bien : les plafonds en lames de bois, le carrelage en terre cuite, les grandes baies. Le reste a été choisi pièce par pièce, autour de quelques classiques du design européen du milieu du siècle.</p>
+      <p class="en">The renovation kept what the building already did well: the slatted timber ceilings, the terracotta floor tiles, the large windows. Everything else was chosen piece by piece, around a few classics of mid-century European design.</p>
+    </div>
+    <div class="facts">
+      <div><b>77,5 m²</b><span class="fr">surface habitable</span><span class="en">living space</span></div>
+      <div><b>15 m²</b><span class="fr">balcon</span><span class="en">balcony</span></div>
+      <div><b>1362 m</b><span class="fr">altitude</span><span class="en">altitude</span></div>
+      <div><b>4807 m</b><span class="fr">le Mont Blanc, visible du balcon</span><span class="en">Mont Blanc, seen from the balcony</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pieces" style="padding-top:24px">
+  <div class="wrap">
+    <p class="kicker"><span class="fr">Les pièces</span><span class="en">The rooms</span></p>
+    <h2><span class="fr">Pièce par pièce</span><span class="en">Room by room</span></h2>
+
+    <article class="room">
+      <div class="room-head">
+        <span class="n">01</span>
+        <h3><span class="fr">Le séjour</span><span class="en">Living room</span></h3>
+        <p class="fr">Il court le long des baies, sous un plafond en lames de bois. Canapé d’angle face à la vue, sol en terre cuite.</p>
+        <p class="en">It runs along the windows under a slatted timber ceiling. Corner sofa facing the view, terracotta floor.</p>
+      </div>
+      <div class="shots">
+        <figure><button data-full="img/sejour-1600.jpg"><img src="img/sejour-800.jpg" srcset="img/sejour-800.jpg 800w, img/sejour-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Séjour" loading="lazy"></button></figure>
+      </div>
+      <div class="shots two" style="margin-top:10px">
+        <figure><button data-full="img/sejour-vue-1600.jpg"><img src="img/sejour-vue-800.jpg" alt="Séjour, vue sur les Alpes" loading="lazy"></button>
+          <figcaption><span class="fr">Les sommets dans l’axe de la fenêtre.</span><span class="en">The peaks framed by the window.</span></figcaption></figure>
+        <figure><button data-full="img/cesca-1600.jpg"><img src="img/cesca-800.jpg" alt="Chaises Cesca" loading="lazy"></button>
+          <figcaption><span class="fr">Table ronde et chaises Cesca de Marcel Breuer.</span><span class="en">Round table and Marcel Breuer’s Cesca chairs.</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="room">
+      <div class="room-head">
+        <span class="n">02</span>
+        <h3><span class="fr">La cuisine</span><span class="en">Kitchen</span></h3>
+        <p class="fr">Un volume blanc, un comptoir traversant, quatre tabourets de Jean Prouvé. Prouvé les avait dessinés pour les lieux de travail et les espaces collectifs. Ce geste résume le projet.</p>
+        <p class="en">A white volume, a full-length counter, four stools by Jean Prouvé. Prouvé designed them for workplaces and shared spaces. That gesture sums up the project.</p>
+      </div>
+      <div class="shots">
+        <figure><button data-full="img/cuisine-1600.jpg"><img src="img/cuisine-800.jpg" srcset="img/cuisine-800.jpg 800w, img/cuisine-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Cuisine" loading="lazy"></button></figure>
+      </div>
+    </article>
+
+    <article class="room">
+      <div class="room-head">
+        <span class="n">03</span>
+        <h3><span class="fr">Les chambres</span><span class="en">Bedrooms</span></h3>
+        <p class="fr">Chambre principale avec tête de lit en velours vert et lampe Coupé de Joe Colombo. Chambre des enfants avec lits sur mesure et un tiroir qui se déplie en lit double.</p>
+        <p class="en">Main bedroom with a green velvet headboard and Joe Colombo’s Coupé lamp. Children’s room with made-to-measure beds and a drawer that pulls out into a double bed.</p>
+      </div>
+      <div class="shots">
+        <figure><button data-full="img/chambre-1600.jpg"><img src="img/chambre-800.jpg" srcset="img/chambre-800.jpg 800w, img/chambre-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Chambre principale" loading="lazy"></button></figure>
+        <figure><button data-full="img/chambre-enfants-1600.jpg"><img src="img/chambre-enfants-800.jpg" srcset="img/chambre-enfants-800.jpg 800w, img/chambre-enfants-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Chambre des enfants" loading="lazy"></button></figure>
+      </div>
+    </article>
+
+    <article class="room">
+      <div class="room-head">
+        <span class="n">04</span>
+        <h3><span class="fr">La salle de bain</span><span class="en">Bathroom</span></h3>
+        <p class="fr">Mosaïque grise, vasque maçonnée, robinetterie Fantini en cuivre.</p>
+        <p class="en">Grey mosaic, built-in basin, Fantini copper fittings.</p>
+      </div>
+      <div class="shots three">
+        <figure><button data-full="img/sdb-1600.jpg"><img src="img/sdb-800.jpg" alt="Salle de bain" loading="lazy"></button></figure>
+        <figure><button data-full="img/sdb-vasque-1600.jpg"><img src="img/sdb-vasque-800.jpg" alt="Vasque" loading="lazy"></button></figure>
+        <figure><button data-full="img/sdb-douche-1600.jpg"><img src="img/sdb-douche-800.jpg" alt="Douche Fantini" loading="lazy"></button></figure>
+      </div>
+    </article>
+
+    <article class="room">
+      <div class="room-head">
+        <span class="n">05</span>
+        <h3><span class="fr">Le balcon</span><span class="en">Balcony</span></h3>
+        <p class="fr">Quinze mètres carrés sous l’avant-toit, avec les fauteuils Crate de Gerrit Rietveld, face à la vallée du Rhône.</p>
+        <p class="en">Fifteen square metres under the eaves, with Gerrit Rietveld’s Crate chairs, facing the Rhône valley.</p>
+      </div>
+      <div class="shots">
+        <figure><button data-full="img/balcon-1600.jpg"><img src="img/balcon-800.jpg" srcset="img/balcon-800.jpg 800w, img/balcon-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Balcon" loading="lazy"></button></figure>
+      </div>
+      <div class="shots two" style="margin-top:10px">
+        <figure><button data-full="img/balcon-facade-1600.jpg"><img src="img/balcon-facade-800.jpg" alt="Balcon le long de la façade" loading="lazy"></button>
+          <figcaption><span class="fr">Le long de la façade, une table pour deux.</span><span class="en">Along the façade, a table for two.</span></figcaption></figure>
+        <figure><button data-full="img/soir-balcon-1600.jpg"><img src="img/soir-balcon-800.jpg" alt="Balcon le soir" loading="lazy"></button>
+          <figcaption><span class="fr">Le même balcon à la tombée de la nuit.</span><span class="en">The same balcony at dusk.</span></figcaption></figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="mobilier" style="background:var(--paper-2)">
+  <div class="wrap">
+    <p class="kicker"><span class="fr">Le mobilier</span><span class="en">Furniture</span></p>
+    <h2><span class="fr">Ce qui a été choisi</span><span class="en">What was chosen</span></h2>
+    <dl class="pieces">
+      <div class="piece"><dt>Cesca</dt><dd>Marcel Breuer</dd></div>
+      <div class="piece"><dt><span class="fr">Tabourets hauts</span><span class="en">High stools</span></dt><dd>Jean Prouvé</dd>
+        <dd class="note"><span class="fr">Quatre, en cuisine.</span><span class="en">Four of them, in the kitchen.</span></dd></div>
+      <div class="piece"><dt>String</dt><dd>Nisse Strinning</dd></div>
+      <div class="piece"><dt>Toio</dt><dd>A. &amp; P. G. Castiglioni</dd></div>
+      <div class="piece"><dt>Parentesi</dt><dd>A. Castiglioni, P. Manzù</dd>
+        <dd class="note"><span class="fr">Un câble tendu du sol au plafond.</span><span class="en">A cable stretched from floor to ceiling.</span></dd></div>
+      <div class="piece"><dt>Spider, Coupé</dt><dd>Joe Colombo</dd></div>
+      <div class="piece"><dt>Crate</dt><dd>Gerrit Rietveld</dd>
+        <dd class="note"><span class="fr">Sur le balcon.</span><span class="en">On the balcony.</span></dd></div>
+      <div class="piece"><dt>Lucca</dt><dd>&amp;Tradition</dd></div>
+      <div class="piece"><dt><span class="fr">Lampe B</span><span class="en">Lamp B</span></dt><dd>Dreyfus</dd></div>
+      <div class="piece"><dt><span class="fr">Robinetterie cuivre</span><span class="en">Copper fittings</span></dt><dd>Fantini</dd></div>
+      <div class="piece"><dt><span class="fr">Murs gris à l’éponge</span><span class="en">Sponged grey walls</span></dt><dd></dd></div>
+      <div class="piece"><dt><span class="fr">Casiers à skis</span><span class="en">Ski lockers</span></dt><dd></dd>
+        <dd class="note"><span class="fr">Surdimensionnés, assez grands pour les sacs de golf.</span><span class="en">Oversized, large enough for golf bags.</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="panorama">
+  <div class="wrap">
+    <p class="kicker">Panorama</p>
+    <h2><span class="fr">Dix-neuf sommets depuis le balcon</span><span class="en">Nineteen peaks from the balcony</span></h2>
+    <div class="prose"><p class="fr">Le balcon regarde vers le sud-ouest, dans l’axe de la vallée du Rhône. Par temps clair, le Mont Blanc ferme l’horizon.</p>
+    <p class="en">The balcony faces south-west, straight down the Rhône valley. On a clear day, Mont Blanc closes the horizon.</p></div>
+    <figure class="pano-img wide" style="margin-top:22px"><button data-full="img/vallee-1600.jpg"><img src="img/vallee-800.jpg" srcset="img/vallee-800.jpg 800w, img/vallee-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="La vallée du Rhône et le Mont Blanc" loading="lazy"></button></figure>
+    <div class="skyline-scroll"><svg class="skyline" id="skyline" viewBox="0 0 1100 420" role="img" aria-label="Profil des sommets visibles"></svg></div>
+    <p class="swipe"><span class="fr">De gauche à droite, tels qu’on les voit du balcon. Faire glisser →</span><span class="en">Left to right, as seen from the balcony. Swipe →</span></p>
+  </div>
+</section>
+
+<section id="soir" class="night">
+  <div class="wrap">
+    <p class="kicker"><span class="fr">Le soir</span><span class="en">Evening</span></p>
+    <h2><span class="fr">Quand la lumière tombe</span><span class="en">When the light goes</span></h2>
+    <div class="shots two" style="margin-top:28px">
+      <figure><button data-full="img/soir-fenetre-1600.jpg"><img src="img/soir-fenetre-800.jpg" alt="Lanterne Lucca devant la fenêtre" loading="lazy"></button>
+        <figcaption><span class="fr">Lanterne Lucca, &amp;Tradition.</span><span class="en">Lucca lantern, &amp;Tradition.</span></figcaption></figure>
+      <figure><button data-full="img/lampe-b-1600.jpg"><img src="img/lampe-b-800.jpg" alt="Lampe B" loading="lazy"></button>
+        <figcaption><span class="fr">Lampe B.</span><span class="en">Lamp B.</span></figcaption></figure>
+    </div>
+    <div class="shots" style="margin-top:10px">
+      <figure><button data-full="img/soir-table-1600.jpg"><img src="img/soir-table-800.jpg" alt="Table le soir" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></button></figure>
+    </div>
+    <figure class="wide" style="margin-top:10px"><button data-full="img/vallee-nuit-1600.jpg"><img src="img/vallee-nuit-800.jpg" srcset="img/vallee-nuit-800.jpg 800w, img/vallee-nuit-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="La vallée de nuit" loading="lazy"></button>
+      <figcaption><span class="fr">La vallée du Rhône, de nuit, depuis le balcon.</span><span class="en">The Rhône valley at night, from the balcony.</span></figcaption></figure>
+  </div>
+</section>
+
+<section id="immeuble">
+  <div class="wrap">
+    <p class="kicker"><span class="fr">L’immeuble</span><span class="en">The building</span></p>
+    <h2><span class="fr">Bois, béton, avant-toits</span><span class="en">Timber, concrete, deep eaves</span></h2>
+    <div class="shots two" style="margin-top:28px">
+      <figure><button data-full="img/immeuble-1600.jpg" style="aspect-ratio:2/3"><img src="img/immeuble-1600.jpg" alt="L’immeuble" loading="lazy"></button>
+        <figcaption><span class="fr">Façade en bois sur pilotis de béton, balcons en encorbellement.</span><span class="en">Timber façade on concrete piers, cantilevered balconies.</span></figcaption></figure>
+      <figure><button data-full="img/escalier-1600.jpg"><img src="img/escalier-800.jpg" alt="Cage d’escalier" loading="lazy"></button>
+        <figcaption><span class="fr">Le puits de lumière au-dessus de la cage d’escalier.</span><span class="en">The skylight above the stairwell.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="infos" style="padding-top:24px">
+  <div class="wrap">
+    <p class="kicker"><span class="fr">Informations</span><span class="en">Information</span></p>
+    <dl class="info">
+      <div><dt><span class="fr">Lieu</span><span class="en">Location</span></dt><dd>Crans-Montana, <span class="fr">commune de Lens, Valais, Suisse</span><span class="en">municipality of Lens, Valais, Switzerland</span></dd></div>
+      <div><dt>Altitude</dt><dd>1362 m</dd></div>
+      <div><dt><span class="fr">Surface</span><span class="en">Size</span></dt><dd><span class="fr">77,5 m² et balcon de 15 m²</span><span class="en">77.5 m² plus a 15 m² balcony</span></dd></div>
+      <div><dt><span class="fr">Location</span><span class="en">Rentals</span></dt><dd><span class="fr">Gérée par CosyHome Conciergerie</span><span class="en">Managed by CosyHome Conciergerie</span></dd></div>
+      <div><dt><span class="fr">Sur place</span><span class="en">On site</span></dt><dd><a href="https://alexandrecegarra.github.io/BUS-La-Concorde-/"><span class="fr">Horaires de bus, arrêt Les Ehripis</span><span class="en">Bus timetables, Les Ehripis stop</span></a></dd></div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="sign">La Concorde</div>
+  <span class="fr">Photographies : CosyHome Conciergerie et propriétaire.</span><span class="en">Photographs: CosyHome Conciergerie and owner.</span>
+</footer>
+
+<div id="lb" hidden role="dialog" aria-modal="true">
+  <button class="x" aria-label="Fermer">×</button>
+  <img alt="">
+  <div class="cap"></div>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setLang(l) {
+    root.setAttribute('data-lang', l); root.lang = l;
+    try { localStorage.setItem('concorde-lang', l); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('concorde-lang'); } catch (e) {}
+  if (!/^(fr|en)$/.test(saved || '')) saved = 'fr';
+  setLang(saved);
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.set); });
+  });
+
+  // lightbox
+  var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap');
+  document.querySelectorAll('figure button[data-full]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lbImg.src = b.dataset.full;
+      var cap = b.parentNode.querySelector('figcaption');
+      var lang = root.getAttribute('data-lang');
+      var span = cap && cap.querySelector('.' + lang);
+      lbCap.textContent = span ? span.textContent : '';
+      lb.hidden = false; document.body.style.overflow = 'hidden';
+    });
+  });
+  function close() { lb.hidden = true; lbImg.removeAttribute('src'); document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) close(); });
+
+  // skyline, left to right as seen from the balcony (bearing ~233°)
+  var peaks = [
+    ['Grand Combin de Grafeneire', 4314], ['Les Louèrettes', 3068], ['Bec de la Montau', 2922],
+    ['Mont Gelé', 3023], ['Pointe de Champ Ferret', 2742], ['Dent de Nendaz', 2463],
+    ['Mont Blanc', 4807], ['Pierre Avoi', 2473], ['Arête de la Lys', 2796],
+    ['Aiguille de la Floria', 2888], ['Mont de l’Arpille', 2085], ['Pointe de Vouilloz', 2672],
+    ['Sommet de l’Ardève', 1507], ['Grand Chavalard', 2901], ['Six Tremble', 2701],
+    ['Tête de Vertsan', 2563], ['Haut de Cry', 2968], ['Grand Muveran', 3051], ['Prabé', 2041]
+  ];
+  var svg = document.getElementById('skyline'), NS = 'http://www.w3.org/2000/svg';
+  var W = 1100, base = 410, x0 = 40, step = (W - 80) / (peaks.length - 1);
+  function y(a) { return base - 10 - (a - 1300) / (4900 - 1300) * 120; }
+  var pts = peaks.map(function (p, i) { return [x0 + i * step, y(p[1])]; });
+  var d = 'M0 ' + base + ' L0 ' + (y(2600)) + ' ';
+  pts.forEach(function (p, i) {
+    if (i > 0) { var mx = (pts[i-1][0] + p[0]) / 2, my = Math.max(pts[i-1][1], p[1]) + 18; d += 'L' + mx + ' ' + my + ' '; }
+    d += 'L' + p[0] + ' ' + p[1] + ' ';
+  });
+  d += 'L' + W + ' ' + (y(2300)) + ' L' + W + ' ' + base + ' Z';
+  var path = document.createElementNS(NS, 'path'); path.setAttribute('d', d); path.setAttribute('class', 'ridge'); svg.appendChild(path);
+  peaks.forEach(function (p, i) {
+    var g = document.createElementNS(NS, 'g'); if (p[1] > 4000) g.setAttribute('class', 'hi');
+    var x = pts[i][0], yy = pts[i][1];
+    var l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', x); l.setAttribute('x2', x); l.setAttribute('y1', yy - 4); l.setAttribute('y2', 240); l.setAttribute('class', 'tick');
+    g.appendChild(l);
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('transform', 'translate(' + (x + 4) + ',236) rotate(-55)');
+    var n = document.createElementNS(NS, 'tspan'); n.textContent = p[0] + '  ';
+    var a = document.createElementNS(NS, 'tspan'); a.setAttribute('class', 'alt'); a.textContent = p[1];
+    t.appendChild(n); t.appendChild(a); g.appendChild(t); svg.appendChild(g);
+  });
+})();
+</script>
+</body>
+</html>
