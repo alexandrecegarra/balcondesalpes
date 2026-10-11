@@ -5,7 +5,7 @@ Originals are NOT kept in the repo (too heavy): put them in photos_src/
 Outputs img/<slug>-1600.jpg and img/<slug>-800.jpg.
 """
 from pathlib import Path
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "photos_src"
@@ -13,7 +13,6 @@ OUT = ROOT / "img"
 
 # slug: (source file, crop box in fractions (left, top, right, bottom) or None)
 PHOTOS = {
-    "immeuble":       ("IMG_0009.jpeg", None),
     "sejour":         ("IMG_1941.png",  "bars"),
     "sejour-vue":     ("IMG_1948.jpeg", None),
     "cuisine":        ("IMG_1960.png",  "bars"),
@@ -32,6 +31,21 @@ PHOTOS = {
     "soir-table":     ("IMG_8815.jpeg", None),
     "lampe-b":        ("IMG_8818.jpeg", None),
     "vallee-nuit":    ("IMG_8939.jpeg", None),
+    # images extracted from the dossier La_Concorde_Crans_1968_last.pdf
+    "immeuble-hiver": ("pdf-immeuble-hiver.jpg", None),
+    "immeuble":       ("pdf-immeuble.jpg", None),   # sharper than IMG_0009
+    "sejour-large":   ("pdf-sejour-large.jpg", None),
+    "cheminee":       ("pdf-cheminee.jpg", None),
+    "toio":           ("pdf-toio.jpg", None),
+    "string":         ("pdf-string.jpg", None),
+    "ete":            ("pdf-ete.jpg", None),
+    "automne":        ("pdf-automne.jpg", None),
+    "plan":           ("pdf-plan.jpg", None),
+}
+
+# privacy: blur number plates and a passer-by (pixel boxes on the source image)
+BLUR = {
+    "immeuble-hiver": [(540, 990, 650, 1045), (1820, 960, 1910, 1005), (1960, 930, 2090, 1040)],
 }
 
 
@@ -58,6 +72,8 @@ def main():
         im = ImageOps.exif_transpose(Image.open(SRC / name)).convert("RGB")
         if crop == "bars":
             im = trim_bars(im)
+        for box in BLUR.get(slug, []):
+            im.paste(im.crop(box).filter(ImageFilter.GaussianBlur(14)), box[:2])
         for size, q in ((1600, 80), (800, 76)):
             c = im.copy()
             c.thumbnail((size, size), Image.LANCZOS)

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>La Concorde · Crans-Montana</title>
-<meta name="description" content="La Concorde, appartement moderniste rénové à Crans-Montana, 1362 m, face à la vallée du Rhône et au Mont Blanc.">
+<title>La Concorde · Crans, 1968</title>
+<meta name="description" content="Résidence La Concorde, Crans, 1968. Un appartement moderniste rénové à 1362 m, face à la plaine du Rhône et au Mont Blanc.">
 <meta name="theme-color" content="#1f1c19">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -162,6 +162,16 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 #lb .cap { position: absolute; left: var(--gutter); right: var(--gutter); bottom: calc(env(safe-area-inset-bottom) + 16px); color: #cfc7bb; font-size: 13px; text-align: center; }
 #lb .x { position: absolute; top: calc(env(safe-area-inset-top) + 10px); right: 12px; appearance: none; border: 0; background: transparent; color: #fff;
   font-size: 30px; line-height: 1; width: 44px; height: 44px; cursor: pointer; }
+
+.lede-q { font-family: var(--serif); font-size: clamp(24px, 5.6vw, 34px); line-height: 1.25; max-width: 40rem; margin: 0 0 18px; }
+.lede-q + .lede-q { color: var(--terracotta); }
+.piece dt small { font-family: var(--sans); font-size: 12px; color: var(--ink-soft); letter-spacing: .06em; margin-left: 6px; font-variant-numeric: tabular-nums; }
+.coda { font-family: var(--serif); font-size: clamp(22px, 5vw, 28px); line-height: 1.3; max-width: 40rem; margin: 36px 0 0; }
+.plan-fig button { background: #fff; aspect-ratio: auto !important; }
+.plan-fig img { object-fit: contain; max-height: 80vh; margin: 0 auto; width: auto; }
+@media (min-width: 900px) { .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; } }
+.night h2, .night h3 { color: var(--night-ink); }
+.night .lede-q { color: var(--night-ink); }
 </style>
 </head>
 <body>
@@ -169,46 +179,66 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 <header class="hero">
   <img src="img/hero-1600.jpg" srcset="img/hero-800.jpg 800w, img/hero-1600.jpg 1600w" sizes="100vw" alt="">
   <div class="hero-top">
-    <span>Crans-Montana · 1362 m</span>
+    <span>Crans · 1968</span>
     <div class="lang" role="group" aria-label="Langue / Language">
       <button data-set="fr"><span>FR</span></button><button data-set="en"><span>EN</span></button>
     </div>
   </div>
   <div class="hero-text">
     <h1>La Concorde</h1>
-    <p class="fr">Un appartement moderniste rénové, face à la vallée du Rhône et au Mont Blanc.</p>
-    <p class="en">A renovated modernist apartment facing the Rhône valley and Mont Blanc.</p>
+    <p class="fr">Un appartement moderniste de 1968 à 1362 m, face à la plaine du Rhône et au Mont Blanc.</p><p class="en">A 1968 modernist apartment at 1,362 m, facing the Rhône plain and Mont Blanc.</p>
   </div>
 </header>
 
 <nav class="bar" aria-label="Sections">
   <div class="inner">
-    <a href="#appartement"><span class="fr">Appartement</span><span class="en">Apartment</span></a>
+    <a href="#batiment"><span class="fr">Le bâtiment</span><span class="en">The building</span></a>
+    <a href="#appartement"><span class="fr">Lire le lieu</span><span class="en">Reading the place</span></a>
     <a href="#pieces"><span class="fr">Pièces</span><span class="en">Rooms</span></a>
     <a href="#mobilier"><span class="fr">Mobilier</span><span class="en">Furniture</span></a>
-    <a href="#panorama">Panorama</a>
     <a href="#soir"><span class="fr">Le soir</span><span class="en">Evening</span></a>
-    <a href="#immeuble"><span class="fr">L’immeuble</span><span class="en">Building</span></a>
-    <a href="#infos"><span class="fr">Infos</span><span class="en">Info</span></a>
+    <a href="#panorama">Panorama</a>
+    <a href="#saisons"><span class="fr">Douze mois</span><span class="en">Twelve months</span></a>
+    <a href="#plan"><span class="fr">Plan &amp; faits</span><span class="en">Plan &amp; facts</span></a>
   </div>
 </nav>
 
 <main>
 
-<section id="appartement">
+<section id="batiment">
   <div class="wrap">
-    <p class="kicker"><span class="fr">L’appartement</span><span class="en">The apartment</span></p>
-    <p class="lede fr">Un appartement de montagne dans un immeuble moderniste en bois et béton, prolongé par un balcon ouvert sur la vallée.</p>
-    <p class="lede en">A mountain apartment in a modernist timber and concrete building, extended by a balcony that opens onto the valley.</p>
+    <p class="kicker">I · <span class="fr">La troisième catégorie</span><span class="en">The third category</span></p>
+    <p class="fr lede-q">Une station alpine offre surtout deux types de bâti : le chalet, vrai ou pastiché, et la résidence locative standardisée.</p><p class="en lede-q">An Alpine resort mostly offers two kinds of building: the chalet, genuine or imitation, and the standardised rental block.</p>
+    <p class="fr lede-q">Il existe une troisième catégorie, plus rare.</p><p class="en lede-q">There is a third, rarer category.</p>
+    <div class="split" style="margin-top:32px">
+      <div class="prose">
+        <p class="fr">La Résidence La Concorde a été construite en 1968 par dix copropriétaires, amis et passionnés de golf, tout près du parcours de Crans. Ce n’est pas une opération immobilière mais une commande privée collective : ses commanditaires ont bâti ce qu’ils voulaient pour eux‑mêmes.</p><p class="en">Résidence La Concorde was built in 1968 by ten co-owners, friends and keen golfers, right next to the Crans golf course. It was not a property development but a private, collective commission: its owners built what they wanted for themselves.</p>
+        <p class="fr">D’où le terrazzo gris perle du hall, le mélèze massif au plafond et en façade, les pilotis de béton, la lucarne zénithale au‑dessus du palier, l’escalier en blocs de pierre et les box à skis surdimensionnés, en réalité taillés pour accueillir aussi le matériel de golf.</p><p class="en">Hence the pearl-grey terrazzo in the hall, solid larch on the ceilings and façade, the concrete piers, the full-height skylight above the landing, the stone-block staircase and the oversized ski lockers, in fact sized for golf bags too.</p>
+        <p class="fr">L’architecture regardait moins vers les chalets de l’Oberland que vers la Californie des Case Study Houses, d’Eichler et de Neutra : plafond de bois continu qui file de l’intérieur vers l’extérieur, baies horizontales en bandeau, balcon qui prolonge le séjour. Le mélèze, bois des hautes vallées valaisannes, y tient le rôle du séquoia.</p><p class="en">The architecture looked less to the chalets of the Bernese Oberland than to the California of the Case Study Houses, Eichler and Neutra: a continuous timber ceiling running from inside to outside, horizontal ribbon windows, a balcony that extends the living room. Larch, the wood of the high Valais valleys, plays the part of redwood.</p>
+      </div>
+      <div class="shots two" style="margin-top:6px">
+        <figure><button data-full="img/immeuble-1600.jpg"><img src="img/immeuble-800.jpg" alt="Façade sud-ouest" loading="lazy"></button>
+      <figcaption><span class="fr">Façade sud‑ouest : ossature mélèze sur pilotis de béton, balcons en porte‑à‑faux.</span><span class="en">South-west façade: larch frame on concrete piers, cantilevered balconies.</span></figcaption></figure>
+        <figure><button data-full="img/escalier-1600.jpg"><img src="img/escalier-800.jpg" alt="Lucarne au-dessus de l’escalier" loading="lazy"></button>
+      <figcaption><span class="fr">La lucarne zénithale au‑dessus du palier.</span><span class="en">The skylight above the landing.</span></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="appartement" style="padding-top:24px">
+  <div class="wrap">
+    <p class="kicker">II · <span class="fr">Lire le bâtiment</span><span class="en">Reading the building</span></p>
+    <h2><span class="fr">Le refus du pastiche</span><span class="en">No pastiche</span></h2>
     <div class="prose">
-      <p class="fr">La rénovation a gardé ce que le bâtiment faisait déjà bien : les plafonds en lames de bois, le carrelage en terre cuite, les grandes baies. Le reste a été choisi pièce par pièce, autour de quelques classiques du design européen du milieu du siècle.</p>
-      <p class="en">The renovation kept what the building already did well: the slatted timber ceilings, the terracotta floor tiles, the large windows. Everything else was chosen piece by piece, around a few classics of mid-century European design.</p>
+      <p class="fr">À Crans comme partout dans les Alpes, la tentation est connue : vieux bois patiné, peaux partout, skis anciens au mur. Ici le choix a été l’inverse : lire le bâtiment plutôt que le déguiser. Le plafond en mélèze lambrissé, les baies horizontales, la dalle en terre cuite, les portes laquées corail et le balcon ont été restaurés, non recouverts.</p><p class="en">In Crans as everywhere in the Alps, the temptation is familiar: weathered old wood, sheepskins everywhere, antique skis on the wall. The choice here was the opposite: to read the building rather than disguise it. The slatted larch ceiling, the ribbon windows, the terracotta floor, the coral-lacquered doors and the balcony were restored, not covered up.</p>
+      <p class="fr">Les murs des pièces communes ne sont pas blancs mais gris très clair, mats, appliqués à l’éponge. Les meubles de la cuisine reprennent exactement cette teinte : la cuisine prolonge le séjour au lieu de s’en séparer.</p><p class="en">The walls of the living spaces are not white but a very pale matt grey, applied with a sponge. The kitchen units take exactly the same shade, so the kitchen extends the living room rather than standing apart from it.</p>
     </div>
     <div class="facts">
-      <div><b>77,5 m²</b><span class="fr">surface habitable</span><span class="en">living space</span></div>
+      <div><b>1968</b><span class="fr">construction</span><span class="en">built</span></div>
+      <div><b>77,5 m²</b><span class="fr">intérieur</span><span class="en">indoors</span></div>
       <div><b>15 m²</b><span class="fr">balcon</span><span class="en">balcony</span></div>
       <div><b>1362 m</b><span class="fr">altitude</span><span class="en">altitude</span></div>
-      <div><b>4807 m</b><span class="fr">le Mont Blanc, visible du balcon</span><span class="en">Mont Blanc, seen from the balcony</span></div>
     </div>
   </div>
 </section>
@@ -222,17 +252,22 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
       <div class="room-head">
         <span class="n">01</span>
         <h3><span class="fr">Le séjour</span><span class="en">Living room</span></h3>
-        <p class="fr">Il court le long des baies, sous un plafond en lames de bois. Canapé d’angle face à la vue, sol en terre cuite.</p>
-        <p class="en">It runs along the windows under a slatted timber ceiling. Corner sofa facing the view, terracotta floor.</p>
+        <p class="fr">Il court le long des baies sous le plafond de mélèze, entre la cheminée et la table ronde, face à la vue.</p><p class="en">It runs along the windows under the larch ceiling, between the fireplace and the round table, facing the view.</p>
       </div>
       <div class="shots">
         <figure><button data-full="img/sejour-1600.jpg"><img src="img/sejour-800.jpg" srcset="img/sejour-800.jpg 800w, img/sejour-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Séjour" loading="lazy"></button></figure>
       </div>
       <div class="shots two" style="margin-top:10px">
-        <figure><button data-full="img/sejour-vue-1600.jpg"><img src="img/sejour-vue-800.jpg" alt="Séjour, vue sur les Alpes" loading="lazy"></button>
-          <figcaption><span class="fr">Les sommets dans l’axe de la fenêtre.</span><span class="en">The peaks framed by the window.</span></figcaption></figure>
+        <figure><button data-full="img/cheminee-1600.jpg"><img src="img/cheminee-800.jpg" alt="Cheminée et Lamp B" loading="lazy"></button>
+      <figcaption><span class="fr">Hotte de cheminée blanche descendant du plafond, poêle en fonte, Lamp B de Thierry Dreyfus.</span><span class="en">White chimney hood dropping from the ceiling, cast-iron stove, Thierry Dreyfus’s Lamp B.</span></figcaption></figure>
         <figure><button data-full="img/cesca-1600.jpg"><img src="img/cesca-800.jpg" alt="Chaises Cesca" loading="lazy"></button>
-          <figcaption><span class="fr">Table ronde et chaises Cesca de Marcel Breuer.</span><span class="en">Round table and Marcel Breuer’s Cesca chairs.</span></figcaption></figure>
+      <figcaption><span class="fr">Chaises Cesca de Marcel Breuer autour de la table ronde.</span><span class="en">Marcel Breuer’s Cesca chairs around the round table.</span></figcaption></figure>
+      </div>
+      <div class="shots two" style="margin-top:10px">
+        <figure><button data-full="img/string-1600.jpg"><img src="img/string-800.jpg" alt="Étagère String et lampe Lucca" loading="lazy"></button>
+      <figcaption><span class="fr">Étagères String de Nils Strinning, lampe Lucca sur un tabouret zigzag de Pols Potten.</span><span class="en">Nils Strinning’s String shelves, a Lucca lamp on a Pols Potten zigzag stool.</span></figcaption></figure>
+        <figure><button data-full="img/sejour-vue-1600.jpg"><img src="img/sejour-vue-800.jpg" alt="Séjour, vue sur les Alpes" loading="lazy"></button>
+      <figcaption><span class="fr">Les sommets dans l’axe de la fenêtre.</span><span class="en">The peaks framed by the window.</span></figcaption></figure>
       </div>
     </article>
 
@@ -240,8 +275,7 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
       <div class="room-head">
         <span class="n">02</span>
         <h3><span class="fr">La cuisine</span><span class="en">Kitchen</span></h3>
-        <p class="fr">Un volume blanc, un comptoir traversant, quatre tabourets de Jean Prouvé. Prouvé les avait dessinés pour les lieux de travail et les espaces collectifs. Ce geste résume le projet.</p>
-        <p class="en">A white volume, a full-length counter, four stools by Jean Prouvé. Prouvé designed them for workplaces and shared spaces. That gesture sums up the project.</p>
+        <p class="fr">Les pièces les plus précieuses, les quatre Tabourets Haut de Jean Prouvé, sont dans la pièce la plus utilitaire, au bar de la cuisine. Prouvé les avait dessinés pour les espaces de travail collectif. Ce geste résume le projet : refuser la hiérarchie convenue entre pièces nobles et pièces fonctionnelles.</p><p class="en">The most valuable pieces, Jean Prouvé’s four Tabouret Haut stools, sit in the most utilitarian room, at the kitchen bar. Prouvé designed them for shared workspaces. That gesture sums up the project: refusing the usual hierarchy between noble rooms and functional ones.</p>
       </div>
       <div class="shots">
         <figure><button data-full="img/cuisine-1600.jpg"><img src="img/cuisine-800.jpg" srcset="img/cuisine-800.jpg 800w, img/cuisine-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Cuisine" loading="lazy"></button></figure>
@@ -252,8 +286,7 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
       <div class="room-head">
         <span class="n">03</span>
         <h3><span class="fr">Les chambres</span><span class="en">Bedrooms</span></h3>
-        <p class="fr">Chambre principale avec tête de lit en velours vert et lampe Coupé de Joe Colombo. Chambre des enfants avec lits sur mesure et un tiroir qui se déplie en lit double.</p>
-        <p class="en">Main bedroom with a green velvet headboard and Joe Colombo’s Coupé lamp. Children’s room with made-to-measure beds and a drawer that pulls out into a double bed.</p>
+        <p class="fr">Chambre principale : tête de lit en velours vert mousse capitonné, lampe Coupé de Joe Colombo au chevet, lampadaire Parentesi, placards d’origine en mélèze massif. Chambre des enfants : lits superposés en bois clair faits sur mesure, plus longs et plus robustes que les standards pour accueillir des adultes, avec un tiroir qui transforme le couchage du bas en lit double.</p><p class="en">Main bedroom: buttoned moss-green velvet headboard, Joe Colombo’s Coupé lamp at the bedside, a Parentesi floor lamp, original solid larch wardrobes. Children’s room: made-to-measure bunk beds in pale wood, longer and sturdier than standard so adults fit, with a drawer that turns the lower bunk into a double bed.</p>
       </div>
       <div class="shots">
         <figure><button data-full="img/chambre-1600.jpg"><img src="img/chambre-800.jpg" srcset="img/chambre-800.jpg 800w, img/chambre-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Chambre principale" loading="lazy"></button></figure>
@@ -265,8 +298,7 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
       <div class="room-head">
         <span class="n">04</span>
         <h3><span class="fr">La salle de bain</span><span class="en">Bathroom</span></h3>
-        <p class="fr">Mosaïque grise, vasque maçonnée, robinetterie Fantini en cuivre.</p>
-        <p class="en">Grey mosaic, built-in basin, Fantini copper fittings.</p>
+        <p class="fr">Une emprise contrainte, entièrement repensée sans un mètre carré de plus : vasque maçonnée, mosaïque carrée gris perle sur tous les plans, miroir circulaire rétroéclairé, robinetterie Fantini en cuivre mat.</p><p class="en">A tight footprint, entirely rethought without adding a square metre: built-in basin, pearl-grey square mosaic on every surface, backlit round mirror, matt copper Fantini fittings.</p>
       </div>
       <div class="shots three">
         <figure><button data-full="img/sdb-1600.jpg"><img src="img/sdb-800.jpg" alt="Salle de bain" loading="lazy"></button></figure>
@@ -279,17 +311,16 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
       <div class="room-head">
         <span class="n">05</span>
         <h3><span class="fr">Le balcon</span><span class="en">Balcony</span></h3>
-        <p class="fr">Quinze mètres carrés sous l’avant-toit, avec les fauteuils Crate de Gerrit Rietveld, face à la vallée du Rhône.</p>
-        <p class="en">Fifteen square metres under the eaves, with Gerrit Rietveld’s Crate chairs, facing the Rhône valley.</p>
+        <p class="fr">Quinze mètres carrés sous l’avant‑toit, dans le prolongement du séjour, avec les fauteuils Crate de Gerrit Rietveld.</p><p class="en">Fifteen square metres under the eaves, carrying on from the living room, with Gerrit Rietveld’s Crate chairs.</p>
       </div>
       <div class="shots">
         <figure><button data-full="img/balcon-1600.jpg"><img src="img/balcon-800.jpg" srcset="img/balcon-800.jpg 800w, img/balcon-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Balcon" loading="lazy"></button></figure>
       </div>
       <div class="shots two" style="margin-top:10px">
         <figure><button data-full="img/balcon-facade-1600.jpg"><img src="img/balcon-facade-800.jpg" alt="Balcon le long de la façade" loading="lazy"></button>
-          <figcaption><span class="fr">Le long de la façade, une table pour deux.</span><span class="en">Along the façade, a table for two.</span></figcaption></figure>
-        <figure><button data-full="img/soir-balcon-1600.jpg"><img src="img/soir-balcon-800.jpg" alt="Balcon le soir" loading="lazy"></button>
-          <figcaption><span class="fr">Le même balcon à la tombée de la nuit.</span><span class="en">The same balcony at dusk.</span></figcaption></figure>
+      <figcaption><span class="fr">Le long de la façade, une table pour deux.</span><span class="en">Along the façade, a table for two.</span></figcaption></figure>
+        <figure><button data-full="img/soir-balcon-1600.jpg"><img src="img/soir-balcon-800.jpg" alt="Balcon en hiver, le soir" loading="lazy"></button>
+      <figcaption><span class="fr">L’hiver depuis la terrasse, la Lucca suspendue au plafond.</span><span class="en">Winter from the terrace, the Lucca hanging from the ceiling.</span></figcaption></figure>
       </div>
     </article>
   </div>
@@ -297,89 +328,116 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 
 <section id="mobilier" style="background:var(--paper-2)">
   <div class="wrap">
-    <p class="kicker"><span class="fr">Le mobilier</span><span class="en">Furniture</span></p>
-    <h2><span class="fr">Ce qui a été choisi</span><span class="en">What was chosen</span></h2>
+    <p class="kicker">III · <span class="fr">La curation</span><span class="en">The selection</span></p>
+    <h2><span class="fr">Une anthologie du modernisme européen</span><span class="en">An anthology of European modernism</span></h2>
+    <div class="prose"><p class="fr">Plutôt que décorer, peupler l’appartement de ses contemporains : des pièces de design européen qui dialoguent avec la coque de 1968. Chacune a été chinée et choisie pour sa résonance avec le lieu, non pour son statut.</p><p class="en">Rather than decorate, the apartment was filled with its contemporaries: European design pieces that talk to the 1968 shell. Each was sourced and chosen for how it resonates with the place, not for its status.</p></div>
     <dl class="pieces">
-      <div class="piece"><dt>Cesca</dt><dd>Marcel Breuer</dd></div>
-      <div class="piece"><dt><span class="fr">Tabourets hauts</span><span class="en">High stools</span></dt><dd>Jean Prouvé</dd>
-        <dd class="note"><span class="fr">Quatre, en cuisine.</span><span class="en">Four of them, in the kitchen.</span></dd></div>
-      <div class="piece"><dt>String</dt><dd>Nisse Strinning</dd></div>
-      <div class="piece"><dt>Toio</dt><dd>A. &amp; P. G. Castiglioni</dd></div>
-      <div class="piece"><dt>Parentesi</dt><dd>A. Castiglioni, P. Manzù</dd>
-        <dd class="note"><span class="fr">Un câble tendu du sol au plafond.</span><span class="en">A cable stretched from floor to ceiling.</span></dd></div>
-      <div class="piece"><dt>Spider, Coupé</dt><dd>Joe Colombo</dd></div>
-      <div class="piece"><dt>Crate</dt><dd>Gerrit Rietveld</dd>
-        <dd class="note"><span class="fr">Sur le balcon.</span><span class="en">On the balcony.</span></dd></div>
-      <div class="piece"><dt>Lucca</dt><dd>&amp;Tradition</dd></div>
-      <div class="piece"><dt><span class="fr">Lampe B</span><span class="en">Lamp B</span></dt><dd>Dreyfus</dd></div>
-      <div class="piece"><dt><span class="fr">Robinetterie cuivre</span><span class="en">Copper fittings</span></dt><dd>Fantini</dd></div>
-      <div class="piece"><dt><span class="fr">Murs gris à l’éponge</span><span class="en">Sponged grey walls</span></dt><dd></dd></div>
-      <div class="piece"><dt><span class="fr">Casiers à skis</span><span class="en">Ski lockers</span></dt><dd></dd>
-        <dd class="note"><span class="fr">Surdimensionnés, assez grands pour les sacs de golf.</span><span class="en">Oversized, large enough for golf bags.</span></dd></div>
+      <div class="piece"><dt>Cesca<small>1928</small></dt><dd>Marcel Breuer</dd>
+        <dd class="note"><span class="fr">Acier tubulaire et cannage. Collection du MoMA.</span><span class="en">Tubular steel and cane. MoMA collection.</span></dd></div>
+      <div class="piece"><dt>Tabouret Haut<small>1942</small></dt><dd>Jean Prouvé</dd>
+        <dd class="note"><span class="fr">Édition Vitra, chinés. Quatre, au bar de la cuisine.</span><span class="en">Vitra edition, sourced second-hand. Four of them, at the kitchen bar.</span></dd></div>
+      <div class="piece"><dt>String<small>1949</small></dt><dd>Nils Strinning</dd>
+        <dd class="note"><span class="fr">Système d’étagères modulaires.</span><span class="en">Modular shelving system.</span></dd></div>
+      <div class="piece"><dt>Toio<small>1962</small></dt><dd>A. &amp; P. G. Castiglioni</dd>
+        <dd class="note"><span class="fr">Phare automobile détourné, Flos. Collection du MoMA.</span><span class="en">A repurposed car headlight, Flos. MoMA collection.</span></dd></div>
+      <div class="piece"><dt>Spider<small>1965</small></dt><dd>Joe Colombo</dd>
+        <dd class="note"><span class="fr">Lampe articulée à pince, O luce. Séjour.</span><span class="en">Articulated clamp lamp, O luce. Living room.</span></dd></div>
+      <div class="piece"><dt>Coupé<small>1967</small></dt><dd>Joe Colombo</dd>
+        <dd class="note"><span class="fr">Lampe orientable, O luce. Chambre principale.</span><span class="en">Adjustable lamp, O luce. Main bedroom.</span></dd></div>
+      <div class="piece"><dt>Parentesi<small>1971</small></dt><dd>A. Castiglioni, P. Manzù</dd>
+        <dd class="note"><span class="fr">Câble tendu du sol au plafond, Flos. Compasso d’Oro 1979.</span><span class="en">A cable stretched from floor to ceiling, Flos. Compasso d’Oro 1979.</span></dd></div>
+      <div class="piece"><dt>Crate<small>1934</small></dt><dd>Gerrit Rietveld</dd>
+        <dd class="note"><span class="fr">Réédition Hay. Mobilier du balcon.</span><span class="en">Hay reissue. Balcony furniture.</span></dd></div>
+      <div class="piece"><dt>Lucca</dt><dd>Space Copenhagen</dd>
+        <dd class="note"><span class="fr">Lampe sans fil en verre soufflé, &amp;Tradition. Séjour et balcon.</span><span class="en">Cordless mouth-blown glass lamp, &amp;Tradition. Living room and balcony.</span></dd></div>
+      <div class="piece"><dt>Lamp B<small>2018</small></dt><dd>Thierry Dreyfus</dd>
+        <dd class="note"><span class="fr">Sculpture lumineuse, DCW Éditions. Angle du séjour.</span><span class="en">Light sculpture, DCW Éditions. Corner of the living room.</span></dd></div>
     </dl>
-  </div>
-</section>
-
-<section id="panorama">
-  <div class="wrap">
-    <p class="kicker">Panorama</p>
-    <h2><span class="fr">Dix-neuf sommets depuis le balcon</span><span class="en">Nineteen peaks from the balcony</span></h2>
-    <div class="prose"><p class="fr">Le balcon regarde vers le sud-ouest, dans l’axe de la vallée du Rhône. Par temps clair, le Mont Blanc ferme l’horizon.</p>
-    <p class="en">The balcony faces south-west, straight down the Rhône valley. On a clear day, Mont Blanc closes the horizon.</p></div>
-    <figure class="pano-img wide" style="margin-top:22px"><button data-full="img/vallee-1600.jpg"><img src="img/vallee-800.jpg" srcset="img/vallee-800.jpg 800w, img/vallee-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="La vallée du Rhône et le Mont Blanc" loading="lazy"></button></figure>
-    <div class="skyline-scroll"><svg class="skyline" id="skyline" viewBox="0 0 1100 420" role="img" aria-label="Profil des sommets visibles"></svg></div>
-    <p class="swipe"><span class="fr">De gauche à droite, tels qu’on les voit du balcon. Faire glisser →</span><span class="en">Left to right, as seen from the balcony. Swipe →</span></p>
   </div>
 </section>
 
 <section id="soir" class="night">
   <div class="wrap">
-    <p class="kicker"><span class="fr">Le soir</span><span class="en">Evening</span></p>
+    <p class="kicker">IV · <span class="fr">Le phare et la vallée</span><span class="en">The headlight and the valley</span></p>
     <h2><span class="fr">Quand la lumière tombe</span><span class="en">When the light goes</span></h2>
-    <div class="shots two" style="margin-top:28px">
-      <figure><button data-full="img/soir-fenetre-1600.jpg"><img src="img/soir-fenetre-800.jpg" alt="Lanterne Lucca devant la fenêtre" loading="lazy"></button>
-        <figcaption><span class="fr">Lanterne Lucca, &amp;Tradition.</span><span class="en">Lucca lantern, &amp;Tradition.</span></figcaption></figure>
-      <figure><button data-full="img/lampe-b-1600.jpg"><img src="img/lampe-b-800.jpg" alt="Lampe B" loading="lazy"></button>
-        <figcaption><span class="fr">Lampe B.</span><span class="en">Lamp B.</span></figcaption></figure>
+    <div class="split">
+      <div class="prose">
+        <p class="fr">Dans l’angle du séjour, la Toio des frères Castiglioni n’est pas tout à fait une lampe : un phare automobile monté sur une tige de canne à pêche, transformateur laissé apparent.</p><p class="en">In the corner of the living room, the Castiglioni brothers’ Toio is not quite a lamp: a car headlight mounted on a fishing-rod stem, its transformer left in view.</p>
+        <p class="fr">Le soir, allumée seule dans la pénombre, elle fait face à un autre paysage de lumières : celui de la plaine du Rhône, treize cents mètres plus bas. Sion, Sierre, Chalais, les villages du coteau. Le phare répond aux phares.</p><p class="en">At night, lit alone in the half-dark, it faces another landscape of lights: the Rhône plain, thirteen hundred metres below. Sion, Sierre, Chalais, the hillside villages. The headlight answers the headlights.</p>
+      </div>
+      <div class="shots two">
+        <figure><button data-full="img/toio-1600.jpg"><img src="img/toio-800.jpg" alt="Lampe Toio le soir" loading="lazy"></button>
+      <figcaption><span class="fr">La Toio, 1962.</span><span class="en">The Toio, 1962.</span></figcaption></figure>
+        <figure><button data-full="img/soir-fenetre-1600.jpg"><img src="img/soir-fenetre-800.jpg" alt="Lanterne Lucca devant la fenêtre" loading="lazy"></button>
+      <figcaption><span class="fr">La Lucca migre le soir vers le balcon.</span><span class="en">At night the Lucca moves out to the balcony.</span></figcaption></figure>
+      </div>
     </div>
-    <div class="shots" style="margin-top:10px">
-      <figure><button data-full="img/soir-table-1600.jpg"><img src="img/soir-table-800.jpg" alt="Table le soir" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></button></figure>
+    <div class="shots two" style="margin-top:10px">
+      <figure><button data-full="img/lampe-b-1600.jpg"><img src="img/lampe-b-800.jpg" alt="Lamp B" loading="lazy"></button>
+      <figcaption><span class="fr">Lamp B, Thierry Dreyfus.</span><span class="en">Lamp B, Thierry Dreyfus.</span></figcaption></figure>
+      <figure><button data-full="img/soir-table-1600.jpg"><img src="img/soir-table-800.jpg" alt="Table le soir" loading="lazy"></button>
+      <figcaption><span class="fr">La table ronde et les Cesca, rideaux tirés.</span><span class="en">The round table and the Cescas, curtains drawn.</span></figcaption></figure>
     </div>
     <figure class="wide" style="margin-top:10px"><button data-full="img/vallee-nuit-1600.jpg"><img src="img/vallee-nuit-800.jpg" srcset="img/vallee-nuit-800.jpg 800w, img/vallee-nuit-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="La vallée de nuit" loading="lazy"></button>
-      <figcaption><span class="fr">La vallée du Rhône, de nuit, depuis le balcon.</span><span class="en">The Rhône valley at night, from the balcony.</span></figcaption></figure>
+      <figcaption><span class="fr">Vue depuis le balcon, vingt‑trois heures. Sion, Sierre et les villages du coteau.</span><span class="en">From the balcony, eleven at night. Sion, Sierre and the hillside villages.</span></figcaption></figure>
   </div>
 </section>
 
-<section id="immeuble">
+<section id="panorama">
   <div class="wrap">
-    <p class="kicker"><span class="fr">L’immeuble</span><span class="en">The building</span></p>
-    <h2><span class="fr">Bois, béton, avant-toits</span><span class="en">Timber, concrete, deep eaves</span></h2>
-    <div class="shots two" style="margin-top:28px">
-      <figure><button data-full="img/immeuble-1600.jpg" style="aspect-ratio:2/3"><img src="img/immeuble-1600.jpg" alt="L’immeuble" loading="lazy"></button>
-        <figcaption><span class="fr">Façade en bois sur pilotis de béton, balcons en encorbellement.</span><span class="en">Timber façade on concrete piers, cantilevered balconies.</span></figcaption></figure>
-      <figure><button data-full="img/escalier-1600.jpg"><img src="img/escalier-800.jpg" alt="Cage d’escalier" loading="lazy"></button>
-        <figcaption><span class="fr">Le puits de lumière au-dessus de la cage d’escalier.</span><span class="en">The skylight above the stairwell.</span></figcaption></figure>
+    <p class="kicker">V · <span class="fr">Ce que l’on voit depuis le balcon</span><span class="en">What you see from the balcony</span></p>
+    <h2><span class="fr">Dix-neuf sommets</span><span class="en">Nineteen peaks</span></h2>
+    <div class="prose"><p class="fr">Le balcon regarde vers le sud‑ouest, dans l’axe de la plaine du Rhône. Par temps clair, le Mont Blanc ferme l’horizon.</p><p class="en">The balcony faces south-west, straight down the Rhône plain. On a clear day, Mont Blanc closes the horizon.</p></div>
+    <figure class="pano-img wide" style="margin-top:22px"><button data-full="img/vallee-1600.jpg"><img src="img/vallee-800.jpg" srcset="img/vallee-800.jpg 800w, img/vallee-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="La plaine du Rhône et le Mont Blanc" loading="lazy"></button></figure>
+    <div class="skyline-scroll"><svg class="skyline" id="skyline" viewBox="0 0 1100 420" role="img" aria-label="Profil des sommets visibles"></svg></div>
+    <p class="swipe"><span class="fr">De gauche à droite, tels qu’on les voit du balcon. Faire glisser →</span><span class="en">Left to right, as seen from the balcony. Swipe →</span></p>
+  </div>
+</section>
+
+<section id="saisons" style="background:var(--paper-2)">
+  <div class="wrap">
+    <p class="kicker">VI · <span class="fr">Douze mois</span><span class="en">Twelve months</span></p>
+    <h2><span class="fr">La montagne, pas seulement le ski</span><span class="en">The mountain, not just skiing</span></h2>
+    <div class="prose"><p class="fr">Le ski n’est qu’une saison parmi d’autres. Crans‑Montana, station horizontale exposée plein sud sur le haut plateau, se vit toute l’année : golf, lacs accessibles à pied, bisses, sentiers, vélo, parapente, festival de jazz, rencontres littéraires.</p><p class="en">Skiing is only one season among others. Crans-Montana, a level resort facing due south on its sunny plateau, is lived all year round: golf, lakes within walking distance, bisses, trails, cycling, paragliding, a jazz festival, literary events.</p></div>
+    <div class="shots" style="margin-top:28px">
+      <figure><button data-full="img/ete-1600.jpg"><img src="img/ete-800.jpg" srcset="img/ete-800.jpg 800w, img/ete-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="L’été sur la plaine du Rhône" loading="lazy"></button>
+      <figcaption><span class="fr">L’été.</span><span class="en">Summer.</span></figcaption></figure>
+    </div>
+    <div class="shots two" style="margin-top:10px">
+      <figure><button data-full="img/automne-1600.jpg"><img src="img/automne-800.jpg" alt="L’automne" loading="lazy"></button>
+      <figcaption><span class="fr">L’automne, brume entre les mélèzes.</span><span class="en">Autumn, haze among the larches.</span></figcaption></figure>
+      <figure><button data-full="img/immeuble-hiver-1600.jpg"><img src="img/immeuble-hiver-800.jpg" alt="L’immeuble en hiver" loading="lazy"></button>
+      <figcaption><span class="fr">L’hiver, La Concorde sous la neige.</span><span class="en">Winter, La Concorde under snow.</span></figcaption></figure>
     </div>
   </div>
 </section>
 
-<section id="infos" style="padding-top:24px">
+<section id="plan">
   <div class="wrap">
-    <p class="kicker"><span class="fr">Informations</span><span class="en">Information</span></p>
-    <dl class="info">
-      <div><dt><span class="fr">Lieu</span><span class="en">Location</span></dt><dd>Crans-Montana, <span class="fr">commune de Lens, Valais, Suisse</span><span class="en">municipality of Lens, Valais, Switzerland</span></dd></div>
-      <div><dt>Altitude</dt><dd>1362 m</dd></div>
-      <div><dt><span class="fr">Surface</span><span class="en">Size</span></dt><dd><span class="fr">77,5 m² et balcon de 15 m²</span><span class="en">77.5 m² plus a 15 m² balcony</span></dd></div>
-      <div><dt><span class="fr">Location</span><span class="en">Rentals</span></dt><dd><span class="fr">Gérée par CosyHome Conciergerie</span><span class="en">Managed by CosyHome Conciergerie</span></dd></div>
-      <div><dt><span class="fr">Sur place</span><span class="en">On site</span></dt><dd><a href="https://alexandrecegarra.github.io/BUS-La-Concorde-/"><span class="fr">Horaires de bus, arrêt Les Ehripis</span><span class="en">Bus timetables, Les Ehripis stop</span></a></dd></div>
-    </dl>
+    <p class="kicker"><span class="fr">Le bien</span><span class="en">The property</span></p>
+    <h2><span class="fr">Plan &amp; faits</span><span class="en">Plan &amp; facts</span></h2>
+    <div class="split">
+      <figure class="plan-fig"><button data-full="img/plan-1600.jpg"><img src="img/plan-800.jpg" alt="Plan de l’appartement" loading="lazy"></button>
+        <figcaption><span class="fr">Plan d’origine.</span><span class="en">Original plan.</span></figcaption></figure>
+      <dl class="info" style="margin-top:0">
+        <div><dt><span class="fr">Lieu</span><span class="en">Location</span></dt><dd>Crans, <span class="fr">commune de Lens, domaine de Crans‑Montana, Valais</span><span class="en">municipality of Lens, Crans-Montana, Valais, Switzerland</span></dd></div>
+        <div><dt><span class="fr">Bâtiment</span><span class="en">Building</span></dt><dd><span class="fr">Résidence La Concorde, 1968. Commande privée de dix copropriétaires.</span><span class="en">Résidence La Concorde, 1968. A private commission by ten co-owners.</span></dd></div>
+        <div><dt><span class="fr">Surface</span><span class="en">Size</span></dt><dd><span class="fr">77,5 m² intérieur, 15 m² de balcon, 92,5 m² au total</span><span class="en">77.5 m² indoors, 15 m² balcony, 92.5 m² in all</span></dd></div>
+        <div><dt><span class="fr">Composition</span><span class="en">Layout</span></dt><dd><span class="fr">Séjour, cuisine, deux chambres, salle de bain</span><span class="en">Living room, kitchen, two bedrooms, bathroom</span></dd></div>
+        <div><dt>Exposition</dt><dd><span class="fr">Sud‑ouest, vue sur la plaine du Rhône et les Alpes valaisannes</span><span class="en">South-west, over the Rhône plain and the Valais Alps</span></dd></div>
+        <div><dt><span class="fr">D’origine</span><span class="en">Original</span></dt><dd><span class="fr">Plafond en mélèze lambrissé, sol en terre cuite, portes laquées corail, terrazzo dans le hall</span><span class="en">Slatted larch ceiling, terracotta floor, coral-lacquered doors, terrazzo in the hall</span></dd></div>
+        <div><dt>Altitude</dt><dd>1362 m</dd></div>
+        <div><dt><span class="fr">Location</span><span class="en">Rentals</span></dt><dd><span class="fr">Gérée par CosyHome Conciergerie</span><span class="en">Managed by CosyHome Conciergerie</span></dd></div>
+        <div><dt><span class="fr">Sur place</span><span class="en">On site</span></dt><dd><a href="https://alexandrecegarra.github.io/BUS-La-Concorde-/"><span class="fr">Horaires de bus, arrêt Les Ehripis</span><span class="en">Bus timetables, Les Ehripis stop</span></a></dd></div>
+      </dl>
+    </div>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <div class="sign">La Concorde</div>
+  <div class="sign">La Concorde · 1968</div>
   <span class="fr">Photographies : CosyHome Conciergerie et propriétaire.</span><span class="en">Photographs: CosyHome Conciergerie and owner.</span>
 </footer>
 

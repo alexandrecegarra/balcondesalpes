@@ -12,6 +12,9 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 
 ## Règles de contenu
 
+- Source de référence du texte : le dossier « La_Concorde_Crans_1968_last.pdf » (13 pages), dont le site reprend les chapitres I à VII en version resserrée. Ses images extraites sont dans `photos_src/pdf-*.jpg` ; plaques et passant floutés sur `immeuble-hiver` (voir `BLUR` dans `src/photos.py`).
+- Écarts relevés avec le dossier : Lucca attribuée à Space Copenhagen (le dossier dit Niclas Hoflin) ; Grand Muveran 3051 m (le dossier répète 2968) ; Mont Blanc avant Pierre Avoi et Sommet de l'Ardève inclus, selon la capture PeakFinder.
+
 - Ton factuel, sans vocabulaire de décoration ; ne jamais inventer de descriptions.
 - Parentesi : câble tendu du sol au plafond. Prouvé : dessiné pour les lieux de travail et les espaces collectifs ; garder « Ce geste résume le projet » en cuisine. Casiers à skis surdimensionnés, aussi pour le golf.
 - Pas d'adresse postale, pas de coordonnées GPS, pas de codes ni de numéros privés.
