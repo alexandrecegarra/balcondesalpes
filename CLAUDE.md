@@ -8,7 +8,7 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 
 - `index.html` : la page entière (HTML, CSS, JS), écrite à la main. Bilingue : chaque texte existe en `<span class="fr">` et `<span class="en">`, le bouton FR/EN bascule `data-lang` sur `<html>`. Français par défaut.
 - `img/` : photos web en deux tailles (`-800.jpg`, `-1600.jpg`), produites par `src/photos.py` à partir des originaux placés dans `photos_src/` (non versionné, trop lourd). `hero-*.jpg` est le balcon recadré au-dessus du filigrane CosyHome.
-- Icônes `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `manifest.webmanifest`, `.nojekyll`.
+- Icônes `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` : recadrage carré de la photo du balcon (avant-toit, sommets, garde-corps), produit par `src/icon.py`. Changer le suffixe `?v=` dans `index.html` et le manifeste à chaque nouvelle icône. `manifest.webmanifest`, `.nojekyll`.
 
 ## Règles de contenu
 
