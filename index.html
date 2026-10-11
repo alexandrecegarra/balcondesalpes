@@ -51,7 +51,7 @@ html[data-lang="fr"] .en, html[data-lang="en"] .fr { display: none !important; }
 
 /* hero */
 .hero { position: relative; height: 100svh; min-height: 560px; color: #fff; overflow: hidden; }
-.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 60%; }
+.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 60%; }
 .hero::after { content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(10,8,6,.35) 0%, rgba(10,8,6,0) 22%, rgba(10,8,6,0) 50%, rgba(10,8,6,.62) 100%); }
 .hero-top { position: absolute; z-index: 2; top: 0; left: 0; right: 0;
@@ -172,6 +172,31 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 @media (min-width: 900px) { .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; } }
 .night h2, .night h3 { color: var(--night-ink); }
 .night .lede-q { color: var(--night-ink); }
+
+/* add to home screen */
+.a2hs { margin-top: 22px; display: inline-flex; align-items: center; gap: 10px; appearance: none; cursor: pointer;
+  font: 500 14px/1 var(--sans); letter-spacing: .02em; color: #fff; padding: 12px 18px 12px 14px; border-radius: 99px;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.55);
+  -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+.a2hs:active { background: rgba(255,255,255,.28); }
+.hero .a2hs img { position: static; inset: auto; object-fit: cover; flex: none; width: 26px; height: 26px; max-width: none; border-radius: 7px; }
+.a2hs span { white-space: nowrap; }
+.sheet-bg { position: fixed; inset: 0; z-index: 60; background: rgba(12,11,10,.45); display: flex; align-items: flex-end; justify-content: center; }
+.sheet { width: 100%; max-width: 520px; background: var(--paper); color: var(--ink); border-radius: 22px 22px 0 0;
+  padding: 26px 24px calc(env(safe-area-inset-bottom) + 26px); box-shadow: 0 -10px 40px rgba(0,0,0,.25);
+  animation: up .28s cubic-bezier(.2,.8,.2,1); }
+@keyframes up { from { transform: translateY(100%); } to { transform: none; } }
+.sheet-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.sheet-head img { width: 56px; height: 56px; border-radius: 13px; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.sheet-head b { display: block; font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1; }
+.sheet-head span { font-size: 13px; color: var(--ink-soft); }
+.sheet ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); counter-reset: s; }
+.sheet li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 15px; line-height: 1.45; }
+.sheet li::before { content: counter(s); font-family: var(--serif); font-size: 24px; line-height: 1; color: var(--terracotta); }
+.sheet .ico { display: inline-block; vertical-align: -4px; width: 20px; height: 20px; margin: 0 2px; }
+.sheet .note { font-size: 13px; color: var(--ink-soft); margin: 14px 0 0; }
+.sheet .ok { margin-top: 18px; width: 100%; appearance: none; border: 0; border-radius: 12px; background: var(--ink); color: var(--paper);
+  font: 500 15px/1 var(--sans); padding: 15px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -186,7 +211,8 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   </div>
   <div class="hero-text">
     <h1>La Concorde</h1>
-    <p class="fr">Un appartement moderniste de 1968 à 1362 m, face à la plaine du Rhône et au Mont Blanc.</p><p class="en">A 1968 modernist apartment at 1,362 m, facing the Rhône plain and Mont Blanc.</p>
+    <p class="fr">Un appartement moderniste de 1968 à 1362&nbsp;m, face à la plaine du Rhône et au Mont Blanc.</p><p class="en">A 1968 modernist apartment at 1,362&nbsp;m, facing the Rhône plain and Mont Blanc.</p>
+    <button class="a2hs" id="a2hs" hidden><img src="apple-touch-icon.png" alt=""><span class="fr">Ajouter à l’écran d’accueil</span><span class="en">Add to Home Screen</span></button>
   </div>
 </header>
 
@@ -441,6 +467,19 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   <span class="fr">Photographies : CosyHome Conciergerie et propriétaire.</span><span class="en">Photographs: CosyHome Conciergerie and owner.</span>
 </footer>
 
+<div class="sheet-bg" id="sheet" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t">
+    <div class="sheet-head"><img src="apple-touch-icon.png" alt=""><div><b id="sheet-t">La Concorde</b><span class="fr">Sur votre écran d’accueil, comme une app.</span><span class="en">On your Home Screen, like an app.</span></div></div>
+    <ol>
+      <li><span><span class="fr">Touchez le bouton Partager <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg> de Safari, parfois rangé sous « ··· ».</span><span class="en">Tap Safari’s Share button <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>, sometimes tucked under “···”.</span></span></li>
+      <li><span><span class="fr">Choisissez « Sur l’écran d’accueil » <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>, au besoin après « Afficher plus ».</span><span class="en">Choose “Add to Home Screen” <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>, after “View More” if needed.</span></span></li>
+      <li><span><span class="fr">Validez avec « Ajouter ».</span><span class="en">Confirm with “Add”.</span></span></li>
+    </ol>
+    <p class="note"><span class="fr">Sur Android, ouvrez le menu ⋮ de Chrome puis « Ajouter à l’écran d’accueil ».</span><span class="en">On Android, open Chrome’s ⋮ menu, then “Add to Home screen”.</span></p>
+    <button class="ok"><span class="fr">Compris</span><span class="en">Got it</span></button>
+  </div>
+</div>
+
 <div id="lb" hidden role="dialog" aria-modal="true">
   <button class="x" aria-label="Fermer">×</button>
   <img alt="">
@@ -461,6 +500,18 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   document.querySelectorAll('.lang button').forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.dataset.set); });
   });
+
+  // add to home screen
+  var a2 = document.getElementById('a2hs'), sheet = document.getElementById('sheet'), deferred = null;
+  var standalone = window.navigator.standalone === true || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+  if (!standalone) a2.hidden = false;
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; });
+  a2.addEventListener('click', function () {
+    if (deferred) { deferred.prompt(); deferred = null; return; }
+    sheet.hidden = false; document.body.style.overflow = 'hidden';
+  });
+  function closeSheet() { sheet.hidden = true; document.body.style.overflow = ''; }
+  sheet.addEventListener('click', function (e) { if (e.target === sheet || e.target.closest('.ok')) closeSheet(); });
 
   // lightbox
   var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap');
