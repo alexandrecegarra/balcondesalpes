@@ -1,6 +1,6 @@
 # La Concorde · site de présentation (balcondesalpes)
 
-Page publique de présentation de l'appartement La Concorde à Crans-Montana (commune de Lens, 1362 m), publiée sur GitHub Pages : https://alexandrecegarra.github.io/balcondesalpes/
+Page publique de présentation de l'appartement La Concorde à Crans-Montana (commune de Lens), publiée sur GitHub Pages : https://alexandrecegarra.github.io/balcondesalpes/
 
 Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Claude construit, publie et maintient le site.
 
@@ -17,6 +17,7 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 
 - Ton factuel, sans vocabulaire de décoration ; ne jamais inventer de descriptions.
 - Parentesi : câble tendu du sol au plafond. Prouvé : dessiné pour les lieux de travail et les espaces collectifs ; garder « Ce geste résume le projet » en cuisine. Casiers à skis surdimensionnés, aussi pour le golf.
+- Altitude : ne jamais afficher 1362 m (altitude exacte de l'appartement) ; dire « le haut plateau de Crans‑Montana, à 1500 m », formule générique voulue par Alexandre. Plaine du Rhône : « près de mille mètres plus bas ».
 - Pas d'adresse postale, pas de coordonnées GPS, pas de codes ni de numéros privés.
 - Aucune mention CosyHome sur le site, ni filigrane ni texte. Photos d'Alexandre partout, sauf là où il a choisi de garder celles de CosyHome (photo d'ouverture du balcon ; salle de bain : trois photos ; chambre principale : gros plan tête de lit), toujours recadrées au-dessus du filigrane. Vérifier le bas de ces images avant publication.
 - Retouches dans `src/photos.py` : redressement des verticales (`persp`), débruitage des photos de nuit (`denoise`), recadrage (`crop`, ex. téléphone au sol dans la chambre). Alexandre tient aux photos de la cuisine (bar, bouilloire) et des lits superposés.
