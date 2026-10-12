@@ -7,7 +7,7 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 ## Structure
 
 - `index.html` : la page entière (HTML, CSS, JS), écrite à la main. Bilingue : chaque texte existe en `<span class="fr">` et `<span class="en">`, le bouton FR/EN bascule `data-lang` sur `<html>`. Français par défaut.
-- `img/` : photos web en deux tailles (`-800.jpg`, `-1600.jpg`), produites par `src/photos.py` à partir des originaux placés dans `photos_src/` (non versionné, trop lourd). `hero-*.jpg` : le balcon avec les Crate (photo d'Alexandre). Les « plates » (`PLATES` dans `src/photos.py`, export 2400 px) sont les grandes photos pleine largeur entre les chapitres ; sur téléphone la première photo de chaque pièce va aussi bord à bord.
+- `img/` : photos web en deux tailles (`-800.jpg`, `-1600.jpg`), produites par `src/photos.py` à partir des originaux placés dans `photos_src/` (non versionné, trop lourd). `hero-*.jpg` : photo CosyHome du balcon (IMG_1977), choisie par Alexandre car elle valorise davantage la vue, recadrée au-dessus du filigrane (`keep` 0.77). Les « plates » (`PLATES` dans `src/photos.py`, export 2400 px) sont les grandes photos pleine largeur entre les chapitres ; sur téléphone la première photo de chaque pièce va aussi bord à bord.
 - Icônes `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` : recadrage carré de la photo du balcon d'Alexandre (poutres, sommets enneigés), produit par `src/icon.py`. Changer le suffixe `?v=` dans `index.html` et le manifeste à chaque nouvelle icône. `manifest.webmanifest`, `.nojekyll`.
 
 ## Règles de contenu
@@ -18,7 +18,7 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 - Ton factuel, sans vocabulaire de décoration ; ne jamais inventer de descriptions.
 - Parentesi : câble tendu du sol au plafond. Prouvé : dessiné pour les lieux de travail et les espaces collectifs ; garder « Ce geste résume le projet » en cuisine. Casiers à skis surdimensionnés, aussi pour le golf.
 - Pas d'adresse postale, pas de coordonnées GPS, pas de codes ni de numéros privés.
-- Aucune mention CosyHome sur le site, ni filigrane ni texte. Photos d'Alexandre partout, sauf là où il a choisi de garder celles de CosyHome (salle de bain : trois photos ; chambre principale : gros plan tête de lit), toujours recadrées au-dessus du filigrane. Vérifier le bas de ces images avant publication.
+- Aucune mention CosyHome sur le site, ni filigrane ni texte. Photos d'Alexandre partout, sauf là où il a choisi de garder celles de CosyHome (photo d'ouverture du balcon ; salle de bain : trois photos ; chambre principale : gros plan tête de lit), toujours recadrées au-dessus du filigrane. Vérifier le bas de ces images avant publication.
 - Retouches dans `src/photos.py` : redressement des verticales (`persp`), débruitage des photos de nuit (`denoise`), recadrage (`crop`, ex. téléphone au sol dans la chambre). Alexandre tient aux photos de la cuisine (bar, bouilloire) et des lits superposés.
 - Ne pas publier la photo de l'entrée côté rue (enseigne et numéro de la rue visibles) ni celle de la cage d'escalier (numéro de porte).
 - Panorama : image annotée `img/panorama-*.jpg` produite par `src/panorama.py` à partir de sa capture PeakFinder (`photos_src/a-peakfinder.png`, cap 233°) : bande de paysage réelle nettoyée (boutons de l'appli, soleil, coordonnées GPS retirés) et étiquettes redessinées aux positions mesurées. Grand Combin est juste hors cadre à gauche (mention en tête). Défilement horizontal sur téléphone.

@@ -24,7 +24,7 @@ OUT = ROOT / "img"
 # slug: (source file, options)
 PHOTOS = {
     # all photos are Alexandre's own (no CosyHome image on the site)
-    "hero":           ("a-balcon-crate.jpg", {}),
+    "hero":           ("IMG_1977.png",  {"bars": True, "keep": 0.77}),  # CosyHome, chosen by Alexandre
     "vallee":         ("IMG_7668.jpeg", {}),
     "soir-fenetre":   ("IMG_8764.jpeg", {}),
     "soir-balcon":    ("IMG_8767.jpeg", {}),
