@@ -59,6 +59,9 @@ PHOTOS = {
     "sdb":            ("IMG_1971.jpeg", {"keep": 0.86}),
     "sdb-vasque":     ("IMG_1972.jpeg", {"keep": 0.87}),
     "sdb-douche":     ("IMG_1973.jpeg", {"keep": 0.86}),
+    # photos supplied by Alexandre from public sources (golf, station by night)
+    "golf":           ("w-golf.jpg", {}),
+    "crans-nuit":     ("w-crans-nuit.jpg", {}),
     "vallee-voile":   ("a-vallee-voile.jpg", {}),
     "sommets-soir":   ("a-sommets-soir.jpg", {}),
     "lune":           ("a-lune.jpg", {}),

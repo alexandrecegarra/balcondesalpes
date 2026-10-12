@@ -28,3 +28,4 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 Playwright à 393 et 320 px : `scrollWidth` égal à la largeur, pas d'erreur JS, bascule de langue et visionneuse fonctionnelles. Commit au nom de `alexandrecegarra <alexandrecegarra@users.noreply.github.com>`, push sur `main`.
 
 - Ne pas publier la photo du séjour avec l'œuvre de Basquiat affichée sur le cadre (reproduction d'une œuvre protégée en sujet principal).
+- Photos golf et station de nuit (`photos_src/w-*`) : fournies par Alexandre, d'origine publique ; il a décidé de les publier. Ne pas rendre le site invisible aux moteurs (pas de noindex ni de robots.txt), à sa demande.
