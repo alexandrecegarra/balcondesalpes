@@ -7,7 +7,7 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 ## Structure
 
 - `index.html` : la page entière (HTML, CSS, JS), écrite à la main. Bilingue : chaque texte existe en `<span class="fr">` et `<span class="en">`, le bouton FR/EN bascule `data-lang` sur `<html>`. Français par défaut.
-- `img/` : photos web en deux tailles (`-800.jpg`, `-1600.jpg`), produites par `src/photos.py` à partir des originaux placés dans `photos_src/` (non versionné, trop lourd). `hero-*.jpg` est le balcon recadré au-dessus du filigrane CosyHome.
+- `img/` : photos web en deux tailles (`-800.jpg`, `-1600.jpg`), produites par `src/photos.py` à partir des originaux placés dans `photos_src/` (non versionné, trop lourd). `hero-*.jpg` est le balcon recadré au-dessus du filigrane CosyHome (aussi produit par `src/photos.py`).
 - Icônes `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` : recadrage carré de la photo du balcon (avant-toit, sommets, garde-corps), produit par `src/icon.py`. Changer le suffixe `?v=` dans `index.html` et le manifeste à chaque nouvelle icône. `manifest.webmanifest`, `.nojekyll`.
 
 ## Règles de contenu
@@ -18,7 +18,8 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 - Ton factuel, sans vocabulaire de décoration ; ne jamais inventer de descriptions.
 - Parentesi : câble tendu du sol au plafond. Prouvé : dessiné pour les lieux de travail et les espaces collectifs ; garder « Ce geste résume le projet » en cuisine. Casiers à skis surdimensionnés, aussi pour le golf.
 - Pas d'adresse postale, pas de coordonnées GPS, pas de codes ni de numéros privés.
-- Photos CosyHome : filigrane conservé tant qu'Alexandre n'a pas fourni de versions sans filigrane.
+- Aucune mention CosyHome sur le site, ni filigrane ni texte (demande d'Alexandre). Ses propres photos (`photos_src/a-*`) remplacent celles de CosyHome ; les seules images CosyHome restantes (ouverture, chambre principale, salle de bain, balcon le long de la façade, String) sont recadrées au-dessus du filigrane (`keep` dans `src/photos.py`). Vérifier le bas de chaque image avant publication.
+- Ne pas publier la photo de l'entrée côté rue (enseigne et numéro de la rue visibles) ni celle de la cage d'escalier (numéro de porte).
 - Panorama : la liste des sommets vient de sa capture PeakFinder (cap 233°), dans l'ordre de gauche à droite.
 
 ## Vérifier puis publier

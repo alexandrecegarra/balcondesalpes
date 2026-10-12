@@ -3,6 +3,10 @@
 Originals are NOT kept in the repo (too heavy): put them in photos_src/
 (same file names) and run:  python3 src/photos.py
 Outputs img/<slug>-1600.jpg and img/<slug>-800.jpg.
+
+No CosyHome watermark may appear on the site: their photos are either replaced
+by Alexandre's own (photos_src/a-*) or cropped above the mark ("keep" = share of
+the height kept from the top).
 """
 from pathlib import Path
 from PIL import Image, ImageOps, ImageFilter
@@ -11,36 +15,43 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "photos_src"
 OUT = ROOT / "img"
 
-# slug: (source file, crop box in fractions (left, top, right, bottom) or None)
+# slug: (source file, options)
 PHOTOS = {
-    "sejour":         ("IMG_1941.png",  "bars"),
-    "sejour-vue":     ("IMG_1948.jpeg", None),
-    "cuisine":        ("IMG_1960.png",  "bars"),
-    "cesca":          ("IMG_1961.jpeg", None),
-    "chambre":        ("IMG_1963.png",  "bars"),
-    "chambre-enfants":("IMG_1967.png",  "bars"),
-    "sdb":            ("IMG_1971.jpeg", None),
-    "sdb-vasque":     ("IMG_1972.jpeg", None),
-    "sdb-douche":     ("IMG_1973.jpeg", None),
-    "balcon":         ("IMG_1977.png",  "bars"),
-    "balcon-facade":  ("IMG_1982.jpeg", None),
-    "escalier":       ("IMG_3869.jpeg", None),
-    "vallee":         ("IMG_7668.jpeg", None),
-    "soir-fenetre":   ("IMG_8764.jpeg", None),
-    "soir-balcon":    ("IMG_8767.jpeg", None),
-    "soir-table":     ("IMG_8815.jpeg", None),
-    "lampe-b":        ("IMG_8818.jpeg", None),
-    "vallee-nuit":    ("IMG_8939.jpeg", None),
-    # images extracted from the dossier La_Concorde_Crans_1968_last.pdf
-    "immeuble-hiver": ("pdf-immeuble-hiver.jpg", None),
-    "immeuble":       ("pdf-immeuble.jpg", None),   # sharper than IMG_0009
-    "sejour-large":   ("pdf-sejour-large.jpg", None),
-    "cheminee":       ("pdf-cheminee.jpg", None),
-    "toio":           ("pdf-toio.jpg", None),
-    "string":         ("pdf-string.jpg", None),
-    "ete":            ("pdf-ete.jpg", None),
-    "automne":        ("pdf-automne.jpg", None),
-    "plan":           ("pdf-plan.jpg", None),
+    # CosyHome photos, cropped above the watermark
+    "hero":           ("IMG_1977.png",  {"bars": True, "keep": 0.77}),
+    "chambre":        ("IMG_1963.png",  {"bars": True, "keep": 0.84}),
+    "sdb":            ("IMG_1971.jpeg", {"keep": 0.86}),
+    "sdb-vasque":     ("IMG_1972.jpeg", {"keep": 0.87}),
+    "sdb-douche":     ("IMG_1973.jpeg", {"keep": 0.86}),
+    "balcon-facade":  ("IMG_1982.jpeg", {"keep": 0.86}),
+    "string":         ("pdf-string.jpg", {"keep": 0.94}),
+    # Alexandre's own photos
+    "vallee":         ("IMG_7668.jpeg", {}),
+    "soir-fenetre":   ("IMG_8764.jpeg", {}),
+    "soir-balcon":    ("IMG_8767.jpeg", {}),
+    "soir-table":     ("IMG_8815.jpeg", {}),
+    "lampe-b":        ("IMG_8818.jpeg", {}),
+    "vallee-nuit":    ("IMG_8939.jpeg", {}),
+    "immeuble-hiver": ("pdf-immeuble-hiver.jpg", {}),
+    "cheminee":       ("pdf-cheminee.jpg", {}),
+    "toio":           ("pdf-toio.jpg", {}),
+    "ete":            ("pdf-ete.jpg", {}),
+    "automne":        ("pdf-automne.jpg", {}),
+    "plan":           ("pdf-plan.jpg", {}),
+    "facade-34":      ("a-facade-34.jpg", {}),
+    "facade-ete":     ("a-facade-ete.jpg", {}),
+    "hiver-balcon":   ("a-hiver-balcon.jpg", {}),
+    "fenetre-hiver":  ("a-fenetre-hiver.jpg", {}),
+    "crans-montana":  ("a-crans-montana.jpg", {}),
+    "sejour-soleil":  ("a-sejour-soleil.jpg", {}),
+    "table-vue":      ("a-table-vue.jpg", {}),
+    "enfilade":       ("a-enfilade.jpg", {}),
+    "bar-jour":       ("a-bar-jour.jpg", {}),
+    "bar-nuit":       ("a-bar-nuit.jpg", {}),
+    "parentesi":      ("a-parentesi.jpg", {}),
+    "lits-1":         ("a-lits-1.jpg", {}),
+    "lits-2":         ("a-lits-2.jpg", {}),
+    "sejour-spider":  ("a-sejour-spider.png", {"bars": True}),
 }
 
 # privacy: blur number plates and a passer-by (pixel boxes on the source image)
@@ -50,30 +61,39 @@ BLUR = {
 
 
 def trim_bars(im):
-    """CosyHome PNG exports carry ~31 px black bands top and bottom."""
+    """Remove black bands (CosyHome exports top/bottom, iPhone screenshots left/right)."""
     w, h = im.size
     g = im.convert("L")
 
-    def dark(y):
+    def dark_row(y):
         return max(g.crop((0, y, w, y + 1)).resize((50, 1)).getdata()) < 25
 
-    t, b = 0, h - 1
-    while t < h // 6 and dark(t):
+    def dark_col(x):
+        return max(g.crop((x, 0, x + 1, h)).resize((1, 50)).getdata()) < 25
+
+    t, b, l, r = 0, h - 1, 0, w - 1
+    while t < h // 6 and dark_row(t):
         t += 1
-    while b > h - h // 6 and dark(b):
+    while b > h - h // 6 and dark_row(b):
         b -= 1
+    while l < w // 6 and dark_col(l):
+        l += 1
+    while r > w - w // 6 and dark_col(r):
+        r -= 1
     m = 4  # small safety margin
-    return im.crop((m, t + m, w - m, b - m))
+    return im.crop((l + (m if l else 0), t + (m if t else 0), r + 1 - (m if r < w - 1 else 0), b + 1 - (m if b < h - 1 else 0)))
 
 
 def main():
     OUT.mkdir(exist_ok=True)
-    for slug, (name, crop) in PHOTOS.items():
+    for slug, (name, opt) in PHOTOS.items():
         im = ImageOps.exif_transpose(Image.open(SRC / name)).convert("RGB")
-        if crop == "bars":
-            im = trim_bars(im)
         for box in BLUR.get(slug, []):
             im.paste(im.crop(box).filter(ImageFilter.GaussianBlur(14)), box[:2])
+        if opt.get("bars"):
+            im = trim_bars(im)
+        if "keep" in opt:
+            im = im.crop((0, 0, im.width, int(im.height * opt["keep"])))
         for size, q in ((1600, 80), (800, 76)):
             c = im.copy()
             c.thumbnail((size, size), Image.LANCZOS)
