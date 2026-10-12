@@ -8,7 +8,8 @@ CosyHome photos are allowed only where Alexandre chose them (bathroom, main
 bedroom close-up), always cropped above the watermark ("keep" = share of height
 kept from the top). Retouching options: "persp" (vertical keystone fix, negative
 when the phone was tilted down), "denoise" (night shots), "crop" (l, t, r, b
-fractions, e.g. to drop a phone left on the floor), "smooth" (sky box to
+fractions, e.g. to drop a phone left on the floor), "delogo" (boxes where a light
+watermark is erased by inpainting), "smooth" (sky box to
 smooth, e.g. a reflection in a window). The annotated panorama is built by
 src/panorama.py.
 """
@@ -56,7 +57,7 @@ PHOTOS = {
     "lits-mouton":    ("a-lits-mouton.jpg", {}),
     "vasque-nuit":    ("a-vasque-nuit.jpg", {"denoise": True}),
     # CosyHome photos chosen by Alexandre, cropped above the watermark
-    "chambre":        ("IMG_1963.png",  {"bars": True, "keep": 0.84}),
+    "chambre":        ("c-tete-de-lit.png", {"delogo": [(1130, 1650, 1690, 1735), (1215, 1758, 1600, 1805)], "bars": True}),
     "sdb":            ("IMG_1971.jpeg", {"keep": 0.86}),
     "sdb-vasque":     ("IMG_1972.jpeg", {"keep": 0.87}),
     "sdb-douche":     ("IMG_1973.jpeg", {"keep": 0.86}),
@@ -128,12 +129,27 @@ def smooth_sky(im, box, feather=60):
     return Image.fromarray(np.clip(a * (1 - m) + fill * m, 0, 255).astype(np.uint8))
 
 
+def delogo(im, boxes, thr=10):
+    """Erase a light watermark (CosyHome logo) inside the given boxes: letters are
+    found as pixels lighter than the local background, then inpainted."""
+    a = np.array(im)
+    g = cv2.cvtColor(a, cv2.COLOR_RGB2GRAY).astype(int)
+    bg = cv2.medianBlur(g.astype(np.uint8), 41).astype(int)
+    m = np.zeros(g.shape, np.uint8)
+    for x0, y0, x1, y1 in boxes:
+        m[y0:y1, x0:x1][(g[y0:y1, x0:x1] - bg[y0:y1, x0:x1]) > thr] = 255
+    m = cv2.dilate(m, np.ones((5, 5), np.uint8), iterations=2)
+    return Image.fromarray(cv2.inpaint(a, m, 9, cv2.INPAINT_TELEA))
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     for slug, (name, opt) in PHOTOS.items():
         im = ImageOps.exif_transpose(Image.open(SRC / name)).convert("RGB")
         for box in BLUR.get(slug, []):
             im.paste(im.crop(box).filter(ImageFilter.GaussianBlur(14)), box[:2])
+        if "delogo" in opt:
+            im = delogo(im, opt["delogo"])
         if "smooth" in opt:
             im = smooth_sky(im, opt["smooth"])
         if opt.get("bars"):
