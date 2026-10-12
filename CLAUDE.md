@@ -21,7 +21,8 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 - Aucune mention CosyHome sur le site, ni filigrane ni texte. Photos d'Alexandre partout, sauf là où il a choisi de garder celles de CosyHome (salle de bain : trois photos ; chambre principale : gros plan tête de lit), toujours recadrées au-dessus du filigrane. Vérifier le bas de ces images avant publication.
 - Retouches dans `src/photos.py` : redressement des verticales (`persp`), débruitage des photos de nuit (`denoise`), recadrage (`crop`, ex. téléphone au sol dans la chambre). Alexandre tient aux photos de la cuisine (bar, bouilloire) et des lits superposés.
 - Ne pas publier la photo de l'entrée côté rue (enseigne et numéro de la rue visibles) ni celle de la cage d'escalier (numéro de porte).
-- Panorama : la liste des sommets vient de sa capture PeakFinder (cap 233°), dans l'ordre de gauche à droite.
+- Panorama : image annotée `img/panorama-*.jpg` produite par `src/panorama.py` à partir de sa capture PeakFinder (`photos_src/a-peakfinder.png`, cap 233°) : bande de paysage réelle nettoyée (boutons de l'appli, soleil, coordonnées GPS retirés) et étiquettes redessinées aux positions mesurées. Grand Combin est juste hors cadre à gauche (mention en tête). Défilement horizontal sur téléphone.
+- Photo du clair de lune : reflet du visage d'Alexandre dans la vitre effacé (`smooth` dans `src/photos.py`).
 
 ## Vérifier puis publier
 

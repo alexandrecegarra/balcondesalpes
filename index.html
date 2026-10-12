@@ -127,14 +127,6 @@ figcaption { font-size: 13px; color: var(--ink-soft); padding-top: 8px; line-hei
 
 /* panorama */
 .pano-img button { aspect-ratio: auto; }
-.skyline-scroll { overflow-x: auto; margin: 26px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-.skyline-scroll::-webkit-scrollbar { display: none; }
-.skyline { display: block; width: 1100px; height: auto; }
-.skyline .ridge { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.2; }
-.skyline .tick { stroke: var(--ink-soft); stroke-width: .8; }
-.skyline text { font-family: var(--sans); font-size: 12px; fill: var(--ink); }
-.skyline text.alt { fill: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.skyline .hi text { fill: var(--terracotta); font-weight: 600; }
 .swipe { font-size: 12px; color: var(--ink-soft); margin-top: 8px; letter-spacing: .04em; }
 
 /* night */
@@ -216,6 +208,12 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 }
 .solo { max-width: 520px; }
 .solo button { aspect-ratio: 4 / 5; }
+
+.pano-scroll { overflow-x: auto; margin: 26px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.pano-scroll::-webkit-scrollbar { display: none; }
+.pano-scroll button { appearance: none; border: 0; padding: 0; background: none; display: block; cursor: zoom-in; }
+.pano-scroll img { display: block; height: 360px; width: auto; max-width: none; }
+@media (min-width: 900px) { .pano-scroll { overflow: visible; margin: 26px 0 0; padding: 0; } .pano-scroll img { width: 100%; height: auto; } }
 </style>
 </head>
 <body>
@@ -469,8 +467,8 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
       <figure class="wide"><button data-full="img/sommets-soir-1600.jpg"><img src="img/sommets-soir-800.jpg" srcset="img/sommets-soir-800.jpg 800w, img/sommets-soir-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Les sommets en fin de journée" loading="lazy"></button>
       <figcaption><span class="fr">Les sommets du fond de la vallée, en fin de journée.</span><span class="en">The peaks at the head of the valley, late in the day.</span></figcaption></figure>
     </div>
-    <div class="skyline-scroll"><svg class="skyline" id="skyline" viewBox="0 0 1100 420" role="img" aria-label="Profil des sommets visibles"></svg></div>
-    <p class="swipe"><span class="fr">De gauche à droite, tels qu’on les voit du balcon. Faire glisser →</span><span class="en">Left to right, as seen from the balcony. Swipe →</span></p>
+    <div class="pano-scroll"><button data-full="img/panorama-2400.jpg" aria-label="Agrandir le panorama"><img src="img/panorama-1200.jpg" srcset="img/panorama-1200.jpg 1200w, img/panorama-2400.jpg 2400w" sizes="(min-width:1200px) 1160px, 900px" alt="Les sommets visibles depuis le balcon, nommés" loading="lazy"></button></div>
+    <p class="swipe"><span class="fr">Depuis le balcon, cap au sud‑ouest. Faire glisser pour parcourir la ligne des sommets →</span><span class="en">From the balcony, looking south-west. Swipe along the skyline →</span></p>
   </div>
 </section>
 
@@ -581,7 +579,7 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 
   // lightbox
   var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.cap');
-  document.querySelectorAll('figure button[data-full]').forEach(function (b) {
+  document.querySelectorAll('figure button[data-full], .pano-scroll button[data-full]').forEach(function (b) {
     b.addEventListener('click', function () {
       lbImg.src = b.dataset.full;
       var cap = b.parentNode.querySelector('figcaption');
@@ -595,38 +593,6 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) close(); });
 
-  // skyline, left to right as seen from the balcony (bearing ~233°)
-  var peaks = [
-    ['Grand Combin de Grafeneire', 4314], ['Les Louèrettes', 3068], ['Bec de la Montau', 2922],
-    ['Mont Gelé', 3023], ['Pointe de Champ Ferret', 2742], ['Dent de Nendaz', 2463],
-    ['Mont Blanc', 4807], ['Pierre Avoi', 2473], ['Arête de la Lys', 2796],
-    ['Aiguille de la Floria', 2888], ['Mont de l’Arpille', 2085], ['Pointe de Vouilloz', 2672],
-    ['Sommet de l’Ardève', 1507], ['Grand Chavalard', 2901], ['Six Tremble', 2701],
-    ['Tête de Vertsan', 2563], ['Haut de Cry', 2968], ['Grand Muveran', 3051], ['Prabé', 2041]
-  ];
-  var svg = document.getElementById('skyline'), NS = 'http://www.w3.org/2000/svg';
-  var W = 1100, base = 410, x0 = 40, step = (W - 80) / (peaks.length - 1);
-  function y(a) { return base - 10 - (a - 1300) / (4900 - 1300) * 120; }
-  var pts = peaks.map(function (p, i) { return [x0 + i * step, y(p[1])]; });
-  var d = 'M0 ' + base + ' L0 ' + (y(2600)) + ' ';
-  pts.forEach(function (p, i) {
-    if (i > 0) { var mx = (pts[i-1][0] + p[0]) / 2, my = Math.max(pts[i-1][1], p[1]) + 18; d += 'L' + mx + ' ' + my + ' '; }
-    d += 'L' + p[0] + ' ' + p[1] + ' ';
-  });
-  d += 'L' + W + ' ' + (y(2300)) + ' L' + W + ' ' + base + ' Z';
-  var path = document.createElementNS(NS, 'path'); path.setAttribute('d', d); path.setAttribute('class', 'ridge'); svg.appendChild(path);
-  peaks.forEach(function (p, i) {
-    var g = document.createElementNS(NS, 'g'); if (p[1] > 4000) g.setAttribute('class', 'hi');
-    var x = pts[i][0], yy = pts[i][1];
-    var l = document.createElementNS(NS, 'line');
-    l.setAttribute('x1', x); l.setAttribute('x2', x); l.setAttribute('y1', yy - 4); l.setAttribute('y2', 240); l.setAttribute('class', 'tick');
-    g.appendChild(l);
-    var t = document.createElementNS(NS, 'text');
-    t.setAttribute('transform', 'translate(' + (x + 4) + ',236) rotate(-55)');
-    var n = document.createElementNS(NS, 'tspan'); n.textContent = p[0] + '  ';
-    var a = document.createElementNS(NS, 'tspan'); a.setAttribute('class', 'alt'); a.textContent = p[1];
-    t.appendChild(n); t.appendChild(a); g.appendChild(t); svg.appendChild(g);
-  });
 })();
 </script>
 </body>

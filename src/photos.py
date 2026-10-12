@@ -8,7 +8,9 @@ CosyHome photos are allowed only where Alexandre chose them (bathroom, main
 bedroom close-up), always cropped above the watermark ("keep" = share of height
 kept from the top). Retouching options: "persp" (vertical keystone fix, negative
 when the phone was tilted down), "denoise" (night shots), "crop" (l, t, r, b
-fractions, e.g. to drop a phone left on the floor).
+fractions, e.g. to drop a phone left on the floor), "smooth" (sky box to
+smooth, e.g. a reflection in a window). The annotated panorama is built by
+src/panorama.py.
 """
 from pathlib import Path
 from PIL import Image, ImageOps, ImageFilter
@@ -64,7 +66,7 @@ PHOTOS = {
     "crans-nuit":     ("w-crans-nuit.jpg", {}),
     "vallee-voile":   ("a-vallee-voile.jpg", {}),
     "sommets-soir":   ("a-sommets-soir.jpg", {}),
-    "lune":           ("a-lune.jpg", {}),
+    "lune":           ("a-lune.jpg", {"smooth": (880, 330, 1420, 730)}),
     "hiver-soleil":   ("a-hiver-soleil.jpg", {}),
 }
 
@@ -115,12 +117,26 @@ def persp(im, k):
     return Image.fromarray(cv2.warpPerspective(a, m, (w, h), flags=cv2.INTER_LANCZOS4))
 
 
+def smooth_sky(im, box, feather=60):
+    """Replace a patch of plain sky by a smooth gradient with matching grain
+    (removes Alexandre's faint reflection in the window on the moonlight photo)."""
+    a = np.array(im).astype(np.float32)
+    x0, y0, x1, y1 = box
+    fill = cv2.GaussianBlur(a, (0, 0), 45) + np.random.default_rng(1).normal(0, 2.2, a.shape).astype(np.float32)
+    m = np.zeros(a.shape[:2], np.float32)
+    m[y0:y1, x0:x1] = 1
+    m = cv2.GaussianBlur(m, (0, 0), feather)[..., None]
+    return Image.fromarray(np.clip(a * (1 - m) + fill * m, 0, 255).astype(np.uint8))
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     for slug, (name, opt) in PHOTOS.items():
         im = ImageOps.exif_transpose(Image.open(SRC / name)).convert("RGB")
         for box in BLUR.get(slug, []):
             im.paste(im.crop(box).filter(ImageFilter.GaussianBlur(14)), box[:2])
+        if "smooth" in opt:
+            im = smooth_sky(im, opt["smooth"])
         if opt.get("bars"):
             im = trim_bars(im)
         if "keep" in opt:
