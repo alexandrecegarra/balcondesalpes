@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Concorde">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
 <link rel="manifest" href="manifest.webmanifest">
 <meta property="og:title" content="La Concorde · Crans-Montana">
 <meta property="og:description" content="Un balcon sur les Alpes, à 1362 m.">
@@ -51,7 +51,7 @@ html[data-lang="fr"] .en, html[data-lang="en"] .fr { display: none !important; }
 
 /* hero */
 .hero { position: relative; height: 100svh; min-height: 560px; color: #fff; overflow: hidden; }
-.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 60%; }
+.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 58%; }
 .hero::after { content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(10,8,6,.35) 0%, rgba(10,8,6,0) 22%, rgba(10,8,6,0) 50%, rgba(10,8,6,.62) 100%); }
 .hero-top { position: absolute; z-index: 2; top: 0; left: 0; right: 0;
@@ -197,12 +197,31 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 .sheet .note { font-size: 13px; color: var(--ink-soft); margin: 14px 0 0; }
 .sheet .ok { margin-top: 18px; width: 100%; appearance: none; border: 0; border-radius: 12px; background: var(--ink); color: var(--paper);
   font: 500 15px/1 var(--sans); padding: 15px; cursor: pointer; }
+
+/* full-bleed plates between chapters */
+.plate { position: relative; margin: 0; background: var(--night); }
+.plate button { display: block; width: 100%; height: 100%; aspect-ratio: auto !important; background: none; }
+.plate img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.plate.land { height: min(78svh, 900px); }
+.plate.port { height: min(125vw, 92svh); }
+@media (min-width: 760px) { .plate.land, .plate.port { height: min(88vh, 1000px); } }
+.plate figcaption { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 14px; padding: 0; color: rgba(255,255,255,.92);
+  font-size: 12px; letter-spacing: .06em; text-shadow: 0 1px 8px rgba(0,0,0,.55); pointer-events: none; }
+.plate::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.38)); }
+/* on phones, the lead photo of each room runs edge to edge */
+@media (max-width: 759px) {
+  .room-head + .shots > figure.wide { margin: 0 calc(-1 * var(--gutter)); }
+  .room-head + .shots > figure.wide figcaption { padding-left: var(--gutter); padding-right: var(--gutter); }
+}
+.solo { max-width: 520px; }
+.solo button { aspect-ratio: 4 / 5; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <img src="img/hero-1600.jpg" srcset="img/hero-800.jpg 800w, img/hero-1600.jpg 1600w" sizes="100vw" alt="">
+  <img src="img/hero-1600.jpg" srcset="img/hero-800.jpg 800w, img/hero-1600.jpg 1600w, img/hero-2400.jpg 2400w" sizes="100vw" alt="">
   <div class="hero-top">
     <span>Crans · 1968</span>
     <div class="lang" role="group" aria-label="Langue / Language">
@@ -212,7 +231,7 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   <div class="hero-text">
     <h1>La Concorde</h1>
     <p class="fr">Un appartement moderniste de 1968 à 1362&nbsp;m, face à la plaine du Rhône et au Mont Blanc.</p><p class="en">A 1968 modernist apartment at 1,362&nbsp;m, facing the Rhône plain and Mont Blanc.</p>
-    <button class="a2hs" id="a2hs" hidden><img src="apple-touch-icon.png?v=2" alt=""><span class="fr">Ajouter à l’écran d’accueil</span><span class="en">Add to Home Screen</span></button>
+    <button class="a2hs" id="a2hs" hidden><img src="apple-touch-icon.png?v=3" alt=""><span class="fr">Ajouter à l’écran d’accueil</span><span class="en">Add to Home Screen</span></button>
   </div>
 </header>
 
@@ -254,6 +273,9 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   </div>
 </section>
 
+<figure class="plate port"><button data-full="img/cheminee-soleil-2400.jpg"><img src="img/cheminee-soleil-1600.jpg" srcset="img/cheminee-soleil-800.jpg 800w, img/cheminee-soleil-1600.jpg 1600w, img/cheminee-soleil-2400.jpg 2400w" sizes="100vw" alt="Le séjour" loading="lazy" style="object-position:50% 22%"></button>
+  <figcaption><span class="fr">Le séjour : plafond de mélèze et terre cuite d’origine.</span><span class="en">The living room: original larch ceiling and terracotta floor.</span></figcaption></figure>
+
 <section id="appartement" style="padding-top:24px">
   <div class="wrap">
     <p class="kicker">II · <span class="fr">Lire le bâtiment</span><span class="en">Reading the building</span></p>
@@ -271,6 +293,9 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   </div>
 </section>
 
+<figure class="plate land"><button data-full="img/vallee-voile-2400.jpg"><img src="img/vallee-voile-1600.jpg" srcset="img/vallee-voile-800.jpg 800w, img/vallee-voile-1600.jpg 1600w, img/vallee-voile-2400.jpg 2400w" sizes="100vw" alt="La plaine du Rhône depuis le balcon" loading="lazy" style="object-position:50% 60%"></button>
+  <figcaption><span class="fr">La plaine du Rhône, depuis le balcon.</span><span class="en">The Rhône plain, from the balcony.</span></figcaption></figure>
+
 <section id="pieces" style="padding-top:24px">
   <div class="wrap">
     <p class="kicker"><span class="fr">Les pièces</span><span class="en">The rooms</span></p>
@@ -285,13 +310,11 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
       <div class="shots">
         <figure class="wide"><button data-full="img/sejour-soleil-1600.jpg"><img src="img/sejour-soleil-800.jpg" srcset="img/sejour-soleil-800.jpg 800w, img/sejour-soleil-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Séjour au soleil" loading="lazy"></button></figure>
       </div>
-      <div class="shots three" style="margin-top:10px">
+      <div class="shots two" style="margin-top:10px">
         <figure><button data-full="img/table-vue-1600.jpg"><img src="img/table-vue-800.jpg" alt="Table ronde et chaises Cesca" loading="lazy"></button>
       <figcaption><span class="fr">Chaises Cesca de Marcel Breuer autour de la table ronde, face à la plaine.</span><span class="en">Marcel Breuer’s Cesca chairs around the round table, facing the plain.</span></figcaption></figure>
         <figure><button data-full="img/cheminee-1600.jpg"><img src="img/cheminee-800.jpg" alt="Cheminée et Lamp B" loading="lazy"></button>
-      <figcaption><span class="fr">Hotte de cheminée blanche descendant du plafond, poêle en fonte, Lamp B.</span><span class="en">White chimney hood dropping from the ceiling, cast-iron stove, Lamp B.</span></figcaption></figure>
-        <figure><button data-full="img/string-1600.jpg"><img src="img/string-800.jpg" alt="Étagère String et lampe Lucca" loading="lazy"></button>
-      <figcaption><span class="fr">Étagères String de Nils Strinning, lampe Lucca.</span><span class="en">Nils Strinning’s String shelves, Lucca lamp.</span></figcaption></figure>
+      <figcaption><span class="fr">Hotte de cheminée blanche, poêle en fonte, Lamp B.</span><span class="en">White chimney hood, cast-iron stove, Lamp B.</span></figcaption></figure>
       </div>
       <div class="shots" style="margin-top:10px">
         <figure class="wide"><button data-full="img/enfilade-1600.jpg"><img src="img/enfilade-800.jpg" srcset="img/enfilade-800.jpg 800w, img/enfilade-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Enfilade et bar" loading="lazy"></button>
@@ -305,9 +328,10 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
         <h3><span class="fr">La cuisine</span><span class="en">Kitchen</span></h3>
         <p class="fr">Les pièces les plus précieuses, les quatre Tabourets Haut de Jean Prouvé, sont dans la pièce la plus utilitaire, au bar de la cuisine. Prouvé les avait dessinés pour les espaces de travail collectif. Ce geste résume le projet : refuser la hiérarchie convenue entre pièces nobles et pièces fonctionnelles.</p><p class="en">The most valuable pieces, Jean Prouvé’s four Tabouret Haut stools, sit in the most utilitarian room, at the kitchen bar. Prouvé designed them for shared workspaces. That gesture sums up the project: refusing the usual hierarchy between noble rooms and functional ones.</p>
       </div>
-      <div class="shots two">
+      <div class="shots three">
         <figure><button data-full="img/bar-jour-1600.jpg"><img src="img/bar-jour-800.jpg" alt="Le bar et les tabourets Prouvé" loading="lazy"></button></figure>
         <figure><button data-full="img/bar-nuit-1600.jpg"><img src="img/bar-nuit-800.jpg" alt="Le bar le soir" loading="lazy"></button></figure>
+        <figure><button data-full="img/bouilloire-1600.jpg"><img src="img/bouilloire-800.jpg" alt="La cuisine le soir" loading="lazy"></button></figure>
       </div>
     </article>
 
@@ -318,13 +342,19 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
         <p class="fr">Chambre principale : tête de lit en velours vert mousse capitonné, lampe Coupé de Joe Colombo au chevet, lampadaire Parentesi, placards d’origine en mélèze massif. Chambre des enfants : lits superposés en bois clair faits sur mesure, plus longs et plus robustes que les standards pour accueillir des adultes, avec un tiroir qui transforme le couchage du bas en lit double.</p><p class="en">Main bedroom: buttoned moss-green velvet headboard, Joe Colombo’s Coupé lamp at the bedside, a Parentesi floor lamp, original solid larch wardrobes. Children’s room: made-to-measure bunk beds in pale wood, longer and sturdier than standard so adults fit, with a drawer that turns the lower bunk into a double bed.</p>
       </div>
       <div class="shots">
-        <figure class="wide"><button data-full="img/chambre-1600.jpg"><img src="img/chambre-800.jpg" srcset="img/chambre-800.jpg 800w, img/chambre-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Chambre principale" loading="lazy"></button></figure>
+        <figure class="wide"><button data-full="img/chambre-nuit-1600.jpg"><img src="img/chambre-nuit-800.jpg" srcset="img/chambre-nuit-800.jpg 800w, img/chambre-nuit-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Chambre principale le soir" loading="lazy"></button></figure>
+      </div>
+      <div class="shots two" style="margin-top:10px">
+        <figure><button data-full="img/chambre-soleil-1600.jpg"><img src="img/chambre-soleil-800.jpg" alt="Chambre principale au soleil" loading="lazy"></button>
+      <figcaption><span class="fr">Tête de lit en velours vert, lampe Coupé, placards en mélèze.</span><span class="en">Green velvet headboard, Coupé lamp, larch wardrobes.</span></figcaption></figure>
+        <figure><button data-full="img/coin-cesca-1600.jpg"><img src="img/coin-cesca-800.jpg" alt="Coin lecture" loading="lazy"></button>
+      <figcaption><span class="fr">Une Cesca, le lampadaire Parentesi.</span><span class="en">A Cesca chair, the Parentesi floor lamp.</span></figcaption></figure>
       </div>
       <div class="shots three" style="margin-top:10px">
-        <figure><button data-full="img/lits-2-1600.jpg"><img src="img/lits-2-800.jpg" alt="Lits superposés sur mesure" loading="lazy"></button></figure>
-        <figure><button data-full="img/lits-1-1600.jpg"><img src="img/lits-1-800.jpg" alt="Lits et escalier à tiroirs" loading="lazy"></button></figure>
-        <figure><button data-full="img/parentesi-1600.jpg"><img src="img/parentesi-800.jpg" alt="Lampadaire Parentesi" loading="lazy"></button>
-      <figcaption><span class="fr">Parentesi : le projecteur coulisse sur le câble.</span><span class="en">Parentesi: the spotlight slides along the cable.</span></figcaption></figure>
+        <figure><button data-full="img/lits-portrait-1600.jpg"><img src="img/lits-portrait-800.jpg" alt="Chambre des enfants" loading="lazy"></button></figure>
+        <figure><button data-full="img/lits-mouton-1600.jpg"><img src="img/lits-mouton-800.jpg" alt="Lits superposés sur mesure" loading="lazy"></button></figure>
+        <figure><button data-full="img/lits-lattes-1600.jpg"><img src="img/lits-lattes-800.jpg" alt="Le lit du bas" loading="lazy"></button>
+      <figcaption><span class="fr">Les lits faits sur mesure, en hêtre.</span><span class="en">The made-to-measure beds.</span></figcaption></figure>
       </div>
     </article>
 
@@ -334,10 +364,12 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
         <h3><span class="fr">La salle de bain</span><span class="en">Bathroom</span></h3>
         <p class="fr">Une emprise contrainte, entièrement repensée sans un mètre carré de plus : vasque maçonnée, mosaïque carrée gris perle sur tous les plans, miroir circulaire rétroéclairé, robinetterie Fantini en cuivre mat.</p><p class="en">A tight footprint, entirely rethought without adding a square metre: built-in basin, pearl-grey square mosaic on every surface, backlit round mirror, matt copper Fantini fittings.</p>
       </div>
-      <div class="shots three">
-        <figure><button data-full="img/sdb-1600.jpg"><img src="img/sdb-800.jpg" alt="Salle de bain" loading="lazy"></button></figure>
-        <figure><button data-full="img/sdb-vasque-1600.jpg"><img src="img/sdb-vasque-800.jpg" alt="Vasque" loading="lazy"></button></figure>
-        <figure><button data-full="img/sdb-douche-1600.jpg"><img src="img/sdb-douche-800.jpg" alt="Douche Fantini" loading="lazy"></button></figure>
+      <div class="shots">
+        <figure class="wide"><button data-full="img/sdb-large-1600.jpg"><img src="img/sdb-large-800.jpg" srcset="img/sdb-large-800.jpg 800w, img/sdb-large-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Salle de bain" loading="lazy"></button></figure>
+      </div>
+      <div class="shots" style="margin-top:10px">
+        <figure class="solo"><button data-full="img/vasque-nuit-1600.jpg"><img src="img/vasque-nuit-800.jpg" alt="Vasque maçonnée et robinetterie Fantini" loading="lazy"></button>
+      <figcaption><span class="fr">La vasque maçonnée et la robinetterie Fantini en cuivre.</span><span class="en">The built-in basin and the copper Fantini tap.</span></figcaption></figure>
       </div>
     </article>
 
@@ -351,15 +383,16 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
         <figure class="wide"><button data-full="img/hiver-balcon-1600.jpg"><img src="img/hiver-balcon-800.jpg" srcset="img/hiver-balcon-800.jpg 800w, img/hiver-balcon-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Le balcon en hiver" loading="lazy"></button>
       <figcaption><span class="fr">Premier soleil d’hiver depuis le balcon.</span><span class="en">First winter sun from the balcony.</span></figcaption></figure>
       </div>
-      <div class="shots two" style="margin-top:10px">
-        <figure><button data-full="img/balcon-facade-1600.jpg"><img src="img/balcon-facade-800.jpg" alt="Balcon le long de la façade" loading="lazy"></button>
-      <figcaption><span class="fr">Le long de la façade, une table pour deux.</span><span class="en">Along the façade, a table for two.</span></figcaption></figure>
-        <figure><button data-full="img/soir-balcon-1600.jpg"><img src="img/soir-balcon-800.jpg" alt="Balcon en hiver, le soir" loading="lazy"></button>
+      <div class="shots" style="margin-top:10px">
+        <figure class="solo"><button data-full="img/soir-balcon-1600.jpg"><img src="img/soir-balcon-800.jpg" alt="Balcon en hiver, le soir" loading="lazy"></button>
       <figcaption><span class="fr">L’hiver depuis la terrasse, la Lucca suspendue au plafond.</span><span class="en">Winter from the terrace, the Lucca hanging from the ceiling.</span></figcaption></figure>
       </div>
     </article>
   </div>
 </section>
+
+<figure class="plate port"><button data-full="img/lucca-string-2400.jpg"><img src="img/lucca-string-1600.jpg" srcset="img/lucca-string-800.jpg 800w, img/lucca-string-1600.jpg 1600w, img/lucca-string-2400.jpg 2400w" sizes="100vw" alt="Lampe Lucca et étagère String" loading="lazy" style="object-position:40% 50%"></button>
+  <figcaption><span class="fr">Lucca, String et tabouret de Pols Potten.</span><span class="en">Lucca, String and a Pols Potten stool.</span></figcaption></figure>
 
 <section id="mobilier" style="background:var(--paper-2)">
   <div class="wrap">
@@ -390,6 +423,9 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
     </dl>
   </div>
 </section>
+
+<figure class="plate land"><button data-full="img/lune-2400.jpg"><img src="img/lune-1600.jpg" srcset="img/lune-800.jpg 800w, img/lune-1600.jpg 1600w, img/lune-2400.jpg 2400w" sizes="100vw" alt="Clair de lune sur la vallée" loading="lazy" style="object-position:45% 50%"></button>
+  <figcaption><span class="fr">Clair de lune sur la vallée, depuis le balcon.</span><span class="en">Moonlight over the valley, from the balcony.</span></figcaption></figure>
 
 <section id="soir" class="night">
   <div class="wrap">
@@ -428,10 +464,17 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
     <h2><span class="fr">Dix-neuf sommets</span><span class="en">Nineteen peaks</span></h2>
     <div class="prose"><p class="fr">Le balcon regarde vers le sud‑ouest, dans l’axe de la plaine du Rhône. Par temps clair, le Mont Blanc ferme l’horizon.</p><p class="en">The balcony faces south-west, straight down the Rhône plain. On a clear day, Mont Blanc closes the horizon.</p></div>
     <figure class="pano-img wide" style="margin-top:22px"><button data-full="img/vallee-1600.jpg"><img src="img/vallee-800.jpg" srcset="img/vallee-800.jpg 800w, img/vallee-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="La plaine du Rhône et le Mont Blanc" loading="lazy"></button></figure>
+    <div class="shots" style="margin-top:10px">
+      <figure class="wide"><button data-full="img/sommets-soir-1600.jpg"><img src="img/sommets-soir-800.jpg" srcset="img/sommets-soir-800.jpg 800w, img/sommets-soir-1600.jpg 1600w" sizes="(min-width:1200px) 1160px, 100vw" alt="Les sommets en fin de journée" loading="lazy"></button>
+      <figcaption><span class="fr">Les sommets du fond de la vallée, en fin de journée.</span><span class="en">The peaks at the head of the valley, late in the day.</span></figcaption></figure>
+    </div>
     <div class="skyline-scroll"><svg class="skyline" id="skyline" viewBox="0 0 1100 420" role="img" aria-label="Profil des sommets visibles"></svg></div>
     <p class="swipe"><span class="fr">De gauche à droite, tels qu’on les voit du balcon. Faire glisser →</span><span class="en">Left to right, as seen from the balcony. Swipe →</span></p>
   </div>
 </section>
+
+<figure class="plate land"><button data-full="img/hiver-soleil-2400.jpg"><img src="img/hiver-soleil-1600.jpg" srcset="img/hiver-soleil-800.jpg 800w, img/hiver-soleil-1600.jpg 1600w, img/hiver-soleil-2400.jpg 2400w" sizes="100vw" alt="La vallée en hiver" loading="lazy" style="object-position:50% 60%"></button>
+  <figcaption><span class="fr">L’hiver sur la plaine du Rhône.</span><span class="en">Winter over the Rhône plain.</span></figcaption></figure>
 
 <section id="saisons" style="background:var(--paper-2)">
   <div class="wrap">
@@ -486,7 +529,7 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 
 <div class="sheet-bg" id="sheet" hidden>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t">
-    <div class="sheet-head"><img src="apple-touch-icon.png?v=2" alt=""><div><b id="sheet-t">La Concorde</b><span class="fr">Sur votre écran d’accueil, comme une app.</span><span class="en">On your Home Screen, like an app.</span></div></div>
+    <div class="sheet-head"><img src="apple-touch-icon.png?v=3" alt=""><div><b id="sheet-t">La Concorde</b><span class="fr">Sur votre écran d’accueil, comme une app.</span><span class="en">On your Home Screen, like an app.</span></div></div>
     <ol>
       <li><span><span class="fr">Touchez le bouton Partager <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg> de Safari, parfois rangé sous « ··· ».</span><span class="en">Tap Safari’s Share button <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>, sometimes tucked under “···”.</span></span></li>
       <li><span><span class="fr">Choisissez « Sur l’écran d’accueil » <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>, au besoin après « Afficher plus ».</span><span class="en">Choose “Add to Home Screen” <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>, after “View More” if needed.</span></span></li>
