@@ -42,7 +42,6 @@ PHOTOS = {
     "hiver-balcon":   ("a-hiver-balcon.jpg", {}),
     "balcon-crate":   ("a-balcon-crate.jpg", {}),
     "balcon-table":   ("a-balcon-table.jpg", {}),
-    "fenetre-hiver":  ("a-fenetre-hiver.jpg", {}),
     "crans-montana":  ("a-crans-montana.jpg", {}),
     "sejour-soleil":  ("a-sejour-soleil.jpg", {}),
     "table-vue":      ("a-table-vue.jpg", {}),
