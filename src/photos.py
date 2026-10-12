@@ -40,6 +40,8 @@ PHOTOS = {
     "plan":           ("pdf-plan.jpg", {}),
     "facade-34":      ("a-facade-34.jpg", {}),
     "hiver-balcon":   ("a-hiver-balcon.jpg", {}),
+    "balcon-crate":   ("a-balcon-crate.jpg", {}),
+    "balcon-table":   ("a-balcon-table.jpg", {}),
     "fenetre-hiver":  ("a-fenetre-hiver.jpg", {}),
     "crans-montana":  ("a-crans-montana.jpg", {}),
     "sejour-soleil":  ("a-sejour-soleil.jpg", {}),
