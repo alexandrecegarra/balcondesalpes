@@ -4,12 +4,16 @@ Originals are NOT kept in the repo (too heavy): put them in photos_src/
 (same file names) and run:  python3 src/photos.py
 Outputs img/<slug>-1600.jpg and img/<slug>-800.jpg.
 
-No CosyHome photo may appear on the site: only Alexandre's own photos
-(photos_src/a-*, IMG_*, pdf-*). "keep" (share of height kept from the top) and
-"bars" remain available for cropping.
+CosyHome photos are allowed only where Alexandre chose them (bathroom, main
+bedroom close-up), always cropped above the watermark ("keep" = share of height
+kept from the top). Retouching options: "persp" (vertical keystone fix, negative
+when the phone was tilted down), "denoise" (night shots), "crop" (l, t, r, b
+fractions, e.g. to drop a phone left on the floor).
 """
 from pathlib import Path
 from PIL import Image, ImageOps, ImageFilter
+import numpy as np
+import cv2
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "photos_src"
@@ -40,19 +44,21 @@ PHOTOS = {
     "table-vue":      ("a-table-vue.jpg", {}),
     "enfilade":       ("a-enfilade.jpg", {}),
     "bar-jour":       ("a-bar-jour.jpg", {}),
-    "bar-nuit":       ("a-bar-nuit.jpg", {}),
-    "sejour-spider":  ("a-sejour-spider.png", {"bars": True}),
-    "cheminee-soleil":("a-cheminee-soleil.jpg", {}),
+    "bar-nuit":       ("a-bar-nuit.jpg", {"denoise": True}),
+    "sejour-spider":  ("a-sejour-spider.png", {"bars": True, "denoise": True}),
+    "cheminee-soleil":("a-cheminee-soleil.jpg", {"persp": -0.04}),
     "lucca-string":   ("a-lucca-string.jpg", {}),
-    "bouilloire":     ("a-bouilloire.jpg", {}),
-    "chambre-soleil": ("a-chambre-soleil.jpg", {}),
-    "chambre-nuit":   ("a-chambre-nuit.jpg", {}),
-    "coin-cesca":     ("a-coin-cesca.jpg", {}),
-    "lits-portrait":  ("a-lits-portrait.jpg", {}),
+    "bouilloire":     ("a-bouilloire.jpg", {"denoise": True}),
+    "chambre-soleil": ("a-chambre-soleil.jpg", {"persp": -0.04, "crop": (0, 0, 1, 0.94)}),
+    "coin-cesca":     ("a-coin-cesca.jpg", {"persp": -0.04}),
+    "lits-portrait":  ("a-lits-portrait.jpg", {"persp": -0.04}),
     "lits-mouton":    ("a-lits-mouton.jpg", {}),
-    "lits-lattes":    ("a-lits-lattes.jpg", {}),
-    "sdb-large":      ("a-sdb-large.jpg", {}),
-    "vasque-nuit":    ("a-vasque-nuit.jpg", {}),
+    "vasque-nuit":    ("a-vasque-nuit.jpg", {"denoise": True}),
+    # CosyHome photos chosen by Alexandre, cropped above the watermark
+    "chambre":        ("IMG_1963.png",  {"bars": True, "keep": 0.84}),
+    "sdb":            ("IMG_1971.jpeg", {"keep": 0.86}),
+    "sdb-vasque":     ("IMG_1972.jpeg", {"keep": 0.87}),
+    "sdb-douche":     ("IMG_1973.jpeg", {"keep": 0.86}),
     "vallee-voile":   ("a-vallee-voile.jpg", {}),
     "sommets-soir":   ("a-sommets-soir.jpg", {}),
     "lune":           ("a-lune.jpg", {}),
@@ -60,7 +66,7 @@ PHOTOS = {
 }
 
 # full-bleed photos shown edge to edge between chapters: also exported at 2400 px
-PLATES = {"hero", "cheminee-soleil", "vallee-voile", "lucca-string", "lune", "hiver-soleil"}
+PLATES = {"hero", "cheminee-soleil", "vallee-voile", "lucca-string", "lune", "hiver-soleil", "crans-montana"}
 
 # privacy: blur number plates and a passer-by (pixel boxes on the source image)
 BLUR = {
@@ -92,6 +98,20 @@ def trim_bars(im):
     return im.crop((l + (m if l else 0), t + (m if t else 0), r + 1 - (m if r < w - 1 else 0), b + 1 - (m if b < h - 1 else 0)))
 
 
+def persp(im, k):
+    """Straighten converging verticals. k < 0: phone tilted down (widen the bottom)."""
+    a = np.array(im)
+    h, w = a.shape[:2]
+    d = abs(k) * w
+    if k > 0:
+        src = np.float32([[d, 0], [w - d, 0], [w, h], [0, h]])
+    else:
+        src = np.float32([[0, 0], [w, 0], [w - d, h], [d, h]])
+    dst = np.float32([[0, 0], [w, 0], [w, h], [0, h]])
+    m = cv2.getPerspectiveTransform(src, dst)
+    return Image.fromarray(cv2.warpPerspective(a, m, (w, h), flags=cv2.INTER_LANCZOS4))
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     for slug, (name, opt) in PHOTOS.items():
@@ -102,10 +122,20 @@ def main():
             im = trim_bars(im)
         if "keep" in opt:
             im = im.crop((0, 0, im.width, int(im.height * opt["keep"])))
+        if "crop" in opt:
+            l, t, r, b = opt["crop"]
+            im = im.crop((int(im.width * l), int(im.height * t), int(im.width * r), int(im.height * b)))
+        if "persp" in opt:
+            im = persp(im, opt["persp"])
+        if opt.get("denoise"):
+            a = cv2.cvtColor(np.array(im), cv2.COLOR_RGB2BGR)
+            a = cv2.fastNlMeansDenoisingColored(a, None, 5, 7, 7, 21)
+            im = Image.fromarray(cv2.cvtColor(a, cv2.COLOR_BGR2RGB))
         sizes = ((2400, 78), (1600, 80), (800, 76)) if slug in PLATES else ((1600, 80), (800, 76))
         for size, q in sizes:
             c = im.copy()
             c.thumbnail((size, size), Image.LANCZOS)
+            c = c.filter(ImageFilter.UnsharpMask(radius=1.2, percent=40, threshold=3))
             c.save(OUT / f"{slug}-{size}.jpg", quality=q, optimize=True, progressive=True)
         print(slug, im.size)
 

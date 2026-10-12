@@ -18,7 +18,8 @@ Alexandre travaille uniquement depuis son iPhone et ne modifie pas le code : Cla
 - Ton factuel, sans vocabulaire de décoration ; ne jamais inventer de descriptions.
 - Parentesi : câble tendu du sol au plafond. Prouvé : dessiné pour les lieux de travail et les espaces collectifs ; garder « Ce geste résume le projet » en cuisine. Casiers à skis surdimensionnés, aussi pour le golf.
 - Pas d'adresse postale, pas de coordonnées GPS, pas de codes ni de numéros privés.
-- Aucune mention CosyHome sur le site, ni filigrane ni texte, et plus aucune photo CosyHome : uniquement les photos d'Alexandre (`photos_src/a-*`, `IMG_*`, `pdf-*`), ouverture et icône comprises.
+- Aucune mention CosyHome sur le site, ni filigrane ni texte. Photos d'Alexandre partout, sauf là où il a choisi de garder celles de CosyHome (salle de bain : trois photos ; chambre principale : gros plan tête de lit), toujours recadrées au-dessus du filigrane. Vérifier le bas de ces images avant publication.
+- Retouches dans `src/photos.py` : redressement des verticales (`persp`), débruitage des photos de nuit (`denoise`), recadrage (`crop`, ex. téléphone au sol dans la chambre). Alexandre tient aux photos de la cuisine (bar, bouilloire) et des lits superposés.
 - Ne pas publier la photo de l'entrée côté rue (enseigne et numéro de la rue visibles) ni celle de la cage d'escalier (numéro de porte).
 - Panorama : la liste des sommets vient de sa capture PeakFinder (cap 233°), dans l'ordre de gauche à droite.
 
