@@ -38,7 +38,6 @@ PHOTOS = {
     "automne":        ("pdf-automne.jpg", {}),
     "plan":           ("pdf-plan.jpg", {}),
     "facade-34":      ("a-facade-34.jpg", {}),
-    "facade-ete":     ("a-facade-ete.jpg", {}),
     "hiver-balcon":   ("a-hiver-balcon.jpg", {}),
     "fenetre-hiver":  ("a-fenetre-hiver.jpg", {}),
     "crans-montana":  ("a-crans-montana.jpg", {}),
