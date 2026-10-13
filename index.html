@@ -218,6 +218,12 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 /* plate shown whole, at the photo's own proportions (letters must stay readable) */
 .plate.full { height: auto; }
 .plate.full img { height: auto; aspect-ratio: 4 / 3; max-height: 92vh; }
+
+/* landscape plates on phones: a little less tall, to show more of the view */
+@media (max-width: 759px) {
+  .plate.land { height: auto; }
+  .plate.land img { height: auto; aspect-ratio: 5 / 6; }
+}
 </style>
 </head>
 <body>
