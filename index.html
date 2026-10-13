@@ -214,6 +214,10 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
 .pano-scroll button { appearance: none; border: 0; padding: 0; background: none; display: block; cursor: zoom-in; }
 .pano-scroll img { display: block; height: 360px; width: auto; max-width: none; }
 @media (min-width: 900px) { .pano-scroll { overflow: visible; margin: 26px 0 0; padding: 0; } .pano-scroll img { width: 100%; height: auto; } }
+
+/* plate shown whole, at the photo's own proportions (letters must stay readable) */
+.plate.full { height: auto; }
+.plate.full img { height: auto; aspect-ratio: 4 / 3; max-height: 92vh; }
 </style>
 </head>
 <body>
@@ -503,7 +507,7 @@ footer .sign { font-family: var(--serif); font-size: 28px; color: var(--ink); ma
   </div>
 </section>
 
-<figure class="plate land"><button data-full="img/crans-montana-2400.jpg"><img src="img/crans-montana-1600.jpg" srcset="img/crans-montana-800.jpg 800w, img/crans-montana-1600.jpg 1600w, img/crans-montana-2400.jpg 2400w" sizes="100vw" alt="Les lettres de Crans-Montana au bord de l’étang" loading="lazy" style="object-position:50% 50%"></button>
+<figure class="plate full"><button data-full="img/crans-montana-2400.jpg"><img src="img/crans-montana-1600.jpg" srcset="img/crans-montana-800.jpg 800w, img/crans-montana-1600.jpg 1600w, img/crans-montana-2400.jpg 2400w" sizes="100vw" alt="Les lettres de Crans-Montana au bord de l’étang" loading="lazy" style="object-position:50% 50%"></button>
   <figcaption><span class="fr">Crans‑Montana, l’été.</span><span class="en">Crans-Montana in summer.</span></figcaption></figure>
 
 <section id="plan">
